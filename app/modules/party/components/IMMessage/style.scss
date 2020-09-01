@@ -1,0 +1,132 @@
+@import 'base.scss';
+
+@include block(ns(Message, IM)) {
+  width: 100%;
+  padding-left: px-to-rem(14);
+  padding-right: px-to-rem(14);
+  padding-top: px-to-rem(8);
+  padding-bottom: px-to-rem(10);
+
+  @include element(container) {
+    display: flex;
+    // flex-direction: column;
+  }
+  @include element(header) {
+    font-size: px-to-rem(12);
+    margin-bottom: px-to-rem(5);
+  }
+
+  @include element(sender) {
+    margin-right: px-to-rem(5);
+  }
+
+  @include element(desc) {
+    margin-right: 0.5em;
+  }
+
+  @include element(user) {
+    // margin-right: px-to-rem(5);
+    @include modifier(self) {
+      color: $color-tertiary;
+    }
+    @include modifier(other) {
+      color: $color-secondary;
+    }
+  }
+
+  @include element(targetArrow) {
+    margin-right: px-to-rem(5);
+  }
+
+  @include element(meta) {
+    color: $gray-8;
+  }
+
+  @include element(info) {
+    font-style: italic;
+    margin-right: px-to-rem(5);
+  }
+
+  @include element(content) {
+    font-size: px-to-rem(14);
+    word-break: break-word;
+    hyphens: auto;
+    // display: flex;
+  }
+  @include element(avatar) {
+    margin-right: px-to-rem(10);
+  }
+
+  @include element(ref) {
+    img {
+      max-width: 100%;
+    }
+
+    pre {
+      overflow: auto;
+      padding: 5px;
+      background-color: $gray-2;
+      code {
+        background-color: transparent;
+      }
+    }
+  }
+
+  @include modifier(inbound) {
+    padding-top: px-to-rem(8);
+    padding-bottom: px-to-rem(10);
+    @include element(container, true) {
+      align-items: flex-start;
+    }
+    @include element(sender, true) {
+      color: $color-secondary;
+    }
+  }
+  @include modifier(outbound) {
+    padding-top: px-to-rem(8);
+    padding-bottom: px-to-rem(10);
+    @include element(container, true) {
+      align-items: flex-start;
+      // align-items: flex-end;
+    }
+    @include element(content, true) {
+      margin-right: px-to-rem(5);
+    }
+    @include element(sender, true) {
+      color: $color-tertiary;
+    }
+  }
+
+  @include modifier(hasAction) {
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-bottom: px-to-rem(10);
+    @include element(content, true) {
+      min-height: px-to-rem(40);
+    }
+    @include element(footer, true) {
+      display: flex;
+      justify-content: flex-end;
+      padding-bottom: px-to-rem(5);
+    }
+  }
+
+  @include modifier(system) {
+    // background-color: rgba(255, 255, 255, 0.3);
+    margin-bottom: px-to-rem(10);
+  }
+
+  @include modifier(friend) {
+  }
+
+  @include modifier(bubble) {
+    @include element('content', true) {
+      font-size: px-to-rem(12);
+      color: $gray-8;
+      font-style: italic;
+    }
+  }
+
+  @include element(viewDraft) {
+    float: right;
+  }
+}

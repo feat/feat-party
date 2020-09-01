@@ -1,0 +1,177 @@
+@import 'base.scss';
+
+@include block(ExpertiseBlock) {
+  .ft-Block__header {
+    // display: flex;
+    // align-items: center;
+  }
+}
+
+@include block(ExpertiseTable) {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  font-size: px-to-rem(14);
+  counter-reset: expertiseCounter;
+  overflow: hidden;
+
+  @include element(head) {
+    width: 100%;
+    font-family: 'MyriadPro-SemiBold';
+  }
+
+  @include element(body) {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+
+    // min-height: px-to-rem(240);
+    max-height: px-to-rem(1000);
+    transition: max-height 0.3s ease;
+
+    // code for expand func
+    // max-height: px-to-rem(240);
+    // @include state(expanded) {
+    //     max-height: 1000px;
+    // };
+  }
+
+  @include element(footer) {
+    height: px-to-rem(24);
+    width: 100%;
+    background-color: #fff;
+  }
+
+  @include element(row) {
+    display: flex;
+    border-bottom: px-to-rem(1) dashed $gray-4;
+    flex-shrink: 0;
+    padding-top: px-to-rem(5);
+    padding-bottom: px-to-rem(5);
+
+    @include modifier(head) {
+      border-bottom: px-to-rem(2) solid black;
+      font-weight: bold;
+      font-family: 'MyriadPro-SemiBold';
+    }
+
+    @include modifier(foot) {
+    }
+  }
+
+  @include element(cell) {
+    // flex-shrink: 1 !important;
+    // margin-left: px-to-rem(4);
+    // margin-right: px-to-rem(4);
+    // display: flex;
+    // align-items: flex-end;
+    min-width: 0;
+    padding-top: px-to-rem(7);
+    padding-bottom: px-to-rem(4);
+    font-size: px-to-rem(16);
+    // box-sizing: border-box;
+
+    @include modifier(head) {
+      // font-size: px-to-rem(14);
+      padding-bottom: 0;
+    }
+
+    @include modifier(label) {
+      flex: 1;
+    }
+
+    @include modifier(priceItem) {
+      text-align: right;
+      padding-left: px-to-rem(8);
+      padding-right: px-to-rem(8);
+      width: px-to-rem(190);
+    }
+  }
+
+  @include element(create) {
+    // @include btn-animation();
+    display: flex;
+    flex: 1;
+    min-height: px-to-rem(48);
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+  }
+
+  @include element(label) {
+    // @include tipStyle();
+    font-size: px-to-rem(18);
+    text-align: left;
+    // color: $text-color;
+  }
+
+  @include element(serviceUnit) {
+    display: inline-block;
+    line-height: 1.5;
+  }
+
+  @include element(priceTip) {
+    // @include tipStyle();
+    color: $gray-6;
+    padding: px-to-rem(2) px-to-rem(4);
+    text-align: right;
+    font-size: px-to-rem(16);
+    &:hover {
+      background-color: $gray-1;
+      border-color: $gray-4;
+    }
+    @include state(data, has) {
+      // color: $text-color;
+    }
+  }
+}
+
+@include block(ExpertisePriceItem) {
+  width: 100%;
+  text-align: right;
+  height: px-to-rem(56);
+  @include element(unit) {
+    display: block;
+    height: px-to-rem(18);
+    line-height: 1.1;
+    font-size: px-to-rem(14);
+  }
+  @include element(price) {
+    font-size: px-to-rem(20);
+  }
+}
+
+@include block(ExpertiseItem) {
+  position: relative;
+  padding-left: px-to-rem(5);
+  @include element(header) {
+    height: px-to-rem($label-item-height);
+  }
+  @include element(name) {
+    display: inline-block;
+    font-size: px-to-rem(22);
+    font-family: $title-font;
+    font-weight: bold;
+    @include modifier(draft) {
+      color: $color-secondary;
+    }
+  }
+  @include element(scene) {
+    margin-right: px-to-rem(5);
+  }
+  @include element(primaryTag) {
+    padding: 2px 4px;
+    font-size: 12px;
+    background-color: $gray-10;
+    color: white;
+    border-radius: 4px;
+    margin-left: 5px;
+  }
+  @include element(deleteBtn) {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

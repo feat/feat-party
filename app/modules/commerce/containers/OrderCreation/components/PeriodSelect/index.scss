@@ -1,0 +1,61 @@
+@import 'base.scss';
+
+@include block(PeriodSelect) {
+  width: 100%;
+
+  .rbc-time-slot.rbc-label {
+    font-size: px-to-rem(12);
+  }
+  .rbc-event-label {
+    font-size: px-to-rem(12);
+  }
+  .rbc-time-gutter.rbc-time-column {
+    display: none;
+  }
+  .rbc-toolbar .rbc-toolbar-label {
+    text-align: left;
+    font-size: px-to-rem(14);
+  }
+
+  @include element(inner) {
+    display: flex;
+  }
+  
+  @include element(column) {
+    min-width: 0;
+    flex-shrink: 0;
+    @include modifier(date) {
+      width: 34%;
+      margin-right: auto;
+    }
+    @include modifier(time) {
+      width: 65%;
+    }
+  }
+
+  @include element(message) {
+    padding-left: px-to-rem(32);
+    span {
+      font-size: px-to-rem(14);
+    }
+  }
+
+  @include element(header) {
+    padding-left: px-to-rem(5);
+    margin-top: px-to-rem(8);
+    margin-bottom: px-to-rem(8);
+  }
+
+  @include element(option) {
+    height: px-to-rem(54);
+    width: calc(100% - #{px-to-rem(10)});
+    margin-bottom: px-to-rem(12);
+    margin-left: px-to-rem(5);
+    margin-right: px-to-rem(5);
+    line-height: 1.2;
+  }
+}
+
+@include block(ns(PeriodSelectOption)) {
+
+}

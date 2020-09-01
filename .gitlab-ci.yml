@@ -1,0 +1,107 @@
+image: node:12
+
+stages:
+  - test
+  - build
+  - upload_assets
+  - deploy
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  key: '$CI_COMMIT_REF_SLUG'
+  paths:
+    - node_modules/
+    - build/cache
+    - .cache/pip
+
+test:
+  stage: test
+  tags:
+    - fe-dev
+  script:
+    - npm set registry http://10.0.10.119:4873
+    - . deploy/branch_env.sh
+    - npm install
+    - export TZ="Asia/Shanghai"; npm test
+
+build:
+  stage: build
+  tags:
+    - fe-dev
+  script:
+    - npm run env-info
+    - RELEASE_TAG="${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHORT_SHA}" npm run build
+  artifacts:
+    paths:
+      - build
+
+sentry_release:
+  stage: upload_assets
+  tags:
+    - fe-dev
+  dependencies:
+    - build
+  script:
+    - RELEASE_TAG="${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHORT_SHA}" npm run sentry-release
+  only:
+    - develop
+    - master
+
+sync_cdn: 
+  stage: upload_assets
+  image: python:3.6
+  tags: 
+    - fe-dev
+  before_script:
+    - pip install awscli
+  script: 
+    - aws s3 sync ./build/static s3://$S3_BUCKET_NAME/$S3_OBJECT_NAME --cache-control "public, max-age=15552000"
+  dependencies:
+    - build
+  only: 
+    - master
+    
+deploy_dev_preview:
+  stage: deploy
+  tags:
+    - fe-dev
+  script:
+    - bash deploy/deploy.sh
+  environment:
+    name: dev_preview
+    url: '$DEV_PREVIEW_URL'
+  dependencies:
+    - build
+  only:
+    - develop
+
+deploy_staging:
+  stage: deploy
+  tags:
+    - fe-dev
+  script:
+    - bash deploy/deploy.sh
+  environment:
+    name: staging
+    url: '$STAGING_URL'
+  dependencies:
+    - build
+  only:
+    - master
+
+deploy_prod:
+  stage: deploy
+  tags:
+    - fe-dev
+  script:
+    - bash deploy/deploy.sh
+  environment:
+    name: production
+    url: '$PRODUCATION_URL'
+  dependencies:
+    - build
+  when: manual
+  only:
+    - master

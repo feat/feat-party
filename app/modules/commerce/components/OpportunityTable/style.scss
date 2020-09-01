@@ -1,0 +1,22 @@
+@import 'base.scss';
+
+@include block(ns(OpportunityTable, cm)) {
+  padding-top: px-to-rem(12);
+  @include element(header) {
+    padding-left: px-to-rem(24);
+    padding-right: px-to-rem(24);
+  }
+  @include element(headerInner) {
+    border-bottom: 4px solid $gray-10;
+    height: px-to-rem(36);
+  }
+  @include element(content) {
+    padding-left: px-to-rem(24);
+    padding-right: px-to-rem(24);
+    position: relative;
+  }
+  @include element(footer) {
+    min-height: px-to-rem(48);
+    background-color: $gray-3;
+  }
+}

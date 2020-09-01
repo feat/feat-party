@@ -1,0 +1,36 @@
+@import 'base.scss';
+
+@include block(MiniDirectionMap) {
+  display: flex;
+  flex-direction: column;
+  .DirectionMap {
+    flex: 1;
+  }
+  @include element(footer) {
+    height: px-to-rem(52);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  @include element(footerCell) {
+    height: 100%;
+    flex: 1;
+  }
+  @include element(item) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    text-align: start;
+    line-height: 1.2;
+    justify-content: center;
+  }
+  @include element(itemLabel) {
+    font-size: px-to-rem(14);
+  }
+  @include element(itemDuration) {
+    font-size: px-to-rem(18);
+    padding-top: px-to-rem(5);
+  }
+}

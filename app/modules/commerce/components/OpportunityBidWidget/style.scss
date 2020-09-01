@@ -1,0 +1,31 @@
+@import 'base.scss';
+
+@include block(ns(OpportunityBidWidget, cm)) {
+  margin: 16px auto;
+  padding: 12px 24px;
+  border: 1px solid $gray-2;
+
+  @include element(inputWrap) {
+    display: flex;
+  }
+  @include element(priceInput) {
+    display: block;
+    flex: 1;
+    width: px-to-rem(140);
+  }
+  @include element(submitBtn) {
+    flex-shrink: 0;
+    // margin-left: 30%;
+    // width: 70%;
+  }
+
+  .ft-FormItem {
+    flex-direction: row;
+  }
+  .ft-FormItem__label {
+    min-width: 30%;
+  }
+  .ft-FormLabel {
+    padding-left: 0;
+  }
+}

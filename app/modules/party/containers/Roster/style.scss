@@ -1,0 +1,55 @@
+@import 'base.scss';
+
+@include block(ns(Roster, IM)) {
+  height: 100%;
+  overflow: auto;
+  padding-top: px-to-rem(12);
+  padding-bottom: px-to-rem(12);
+  padding-left: px-to-rem(12);
+  padding-right: px-to-rem(36);
+
+  @include element(contactTab) {
+    position: absolute;
+    top: px-to-rem(14);
+    padding-left: px-to-rem(10);
+    flex-shrink: 0;
+
+    @include modifier(btn) {
+      min-width: px-to-rem(80);
+      height: px-to-rem(26);
+      padding: 0 px-to-rem(10);
+      color: $gray-6;
+      transition: all 0.1s linear;
+      &.is-active {
+        color: $gray-10;
+        height: px-to-rem(28);
+      }
+    }
+    // @include modifier(firstBtn) {
+    //   z-index: 10;
+    // }
+    @include modifier(nextBtn) {
+      margin-left: px-to-rem(-30);
+    }
+  }
+
+  @include element(contactGroup) {
+    position: absolute;
+    left: 0;
+    top: 0px;
+    background: rgba(255, 255, 255, 0.9);
+    width: 50%;
+    height: 100%;
+    padding: px-to-rem(12);
+    border-right: 1px solid #eee;
+
+    @include modifier(label) {
+      padding: px-to-rem(12);
+      font-size: px-to-rem(18);
+    }
+    @include modifier(main) {
+      overflow: auto;
+      height: calc(100% - 40px);
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@import 'base.scss';
+
+@include block(HonorForm) {
+  @include element(PicBlock) {
+    border: 1px dashed #aaa;
+    padding: 1px;
+    position: relative;
+
+    @include state(active) {
+      border: 2px solid $input-active-color;
+      padding: 0;
+    }
+  }
+  @include element(InpBlock) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+  }
+}

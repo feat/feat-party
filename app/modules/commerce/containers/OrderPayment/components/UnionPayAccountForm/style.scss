@@ -1,0 +1,26 @@
+@import 'base.scss';
+
+@include block(ns(UnionPaySection, cm)) {
+  width: px-to-rem(400);
+  min-height: px-to-rem(200);
+  padding: px-to-rem(12);
+  position: relative;
+  @include element(header) {
+    text-align: center;
+    margin-top: 0;
+
+    @include block(ns(PayMethodIcon, cm)) {
+      width: px-to-rem(60);
+      margin-right: .5em;
+      line-height: 0;
+    }
+  }
+  @include element(footer) {
+    text-align: center;
+  }
+  @include element(error) {
+    text-align: center;
+    position: relative;
+    top: .5em;
+  }
+}

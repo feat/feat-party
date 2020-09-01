@@ -1,0 +1,4 @@
+export const ADDRESS_TYPE_SERVICE = 0;
+export const ADDRESS_TYPE_WORKPLACE = 100;
+
+export const VISIBILITY_STRATEGY_SPECIFY = 0;

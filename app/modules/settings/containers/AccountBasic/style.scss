@@ -1,0 +1,48 @@
+@import 'base.scss';
+
+@include block(HomeDomainWidget) {
+  font-size: px-to-rem(14);
+  display: flex;
+  align-items: center;
+
+  .ft-TextInputWidget {
+    // max-width: calc(100% - #{px-to-rem(30)});
+    max-width: 100%;
+  }
+
+  .ft-TextInputWidget__prefix {
+    flex-shrink: 0;
+    padding-right: px-to-rem(2);
+  }
+
+  @include state(disabled) {
+    .ft-TextInputWidget {
+      max-width: 100%;
+    }
+  }
+
+  @include element(input) {
+    min-width: 0;
+  }
+  @include element(btn) {
+    flex-shrink: 0;
+    width: px-to-rem(30);
+    text-align: center;
+  }
+}
+
+@include block(ns(Logout, block)) {
+  padding-top: px-to-rem(16);
+  @include element(btn){
+    background: #c1272d;
+    color: $gray-0;
+    text-align: center;
+    padding: px-to-rem(6);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all linear 0.2s;
+    &:hover {
+      transform: scale(0.96);
+    }
+  }
+}

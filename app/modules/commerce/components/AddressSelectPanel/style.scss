@@ -1,0 +1,207 @@
+@import 'base.scss';
+
+@include block(ns(AddressSelectPanel)) {
+  @include element(content) {
+    display: flex;
+    height: px-to-rem(440);
+    margin-top: px-to-rem(12);
+    overflow: hidden;
+  }
+
+  @include element(col1) {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    padding-right: px-to-rem(12);
+    min-width: 0;
+    height: 100%;
+  }
+
+  @include element(col2) {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    padding-left: px-to-rem(12);
+    height: 100%;
+  }
+
+  @include element(addBtn) {
+    flex-shrink: 0;
+    height: px-to-rem(56);
+    display: flex;
+    align-items: center;
+  }
+
+  @include element(list) {
+    flex: 1;
+    overflow: auto;
+  }
+}
+
+@include block(ns(AddressSelectOption)) {
+  width: 100%;
+  transition: all 0.3s ease;
+  border-radius: px-to-rem(14);
+  cursor: pointer;
+
+  &:hover {
+    background-color: $gray-1;
+  }
+
+  @include element(label) {
+    display: flex;
+    align-items: center;
+    font-size: px-to-rem(24);
+    font-weight: bold;
+    padding-top: px-to-rem(5);
+    padding-bottom: px-to-rem(5);
+    border-radius: px-to-rem(14);
+
+    .ft-OptionSymbol {
+      margin-left: px-to-rem(12);
+      margin-right: px-to-rem(12);
+    }
+  }
+  @include element(info) {
+    // font-size: px-to-rem(18);
+  }
+  @include element(mapPlaceholder) {
+    width: 100%;
+    height: 100%;
+    background-color: $gray-1;
+  }
+
+  @include element(footer) {
+    display: flex;
+    position: relative;
+    margin-top: px-to-rem(10);
+  }
+
+  @include element(contentLabel) {
+    margin-right: 0.5em;
+  }
+
+  @include element(action) {
+    padding-left: px-to-rem(12);
+    padding-right: px-to-rem(12);
+    position: relative;
+    &::before {
+      content: '';
+      display: block;
+      height: px-to-rem(16);
+      width: px-to-rem(2);
+      background-color: $color-link;
+      position: absolute;
+      left: -1px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:first-child {
+      padding-left: 0;
+      &::before {
+        content: none;
+      }
+    }
+  }
+  
+  @include element(meta) {
+    background-color: $gray-2;
+    padding: px-to-rem(3) px-to-rem(6);
+    border-radius: px-to-rem(8);
+    margin-right: px-to-rem(4);
+    font-size: px-to-rem(14);
+  }
+
+  @include modifier(card) {
+    margin-bottom: px-to-rem(20);
+
+    @include element(content, true) {
+      padding-left: px-to-rem(12 + 20 + 12);
+      padding-top: px-to-rem(12);
+    }
+    @include element(footer, true) {
+      padding-left: px-to-rem(12 + 20 + 12 - $btn-md-padding-x);
+      padding-bottom: px-to-rem(4);
+    }
+  }
+
+  @include modifier(momentPlace) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    cursor: pointer;
+
+    @include element(content, true) {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    @include element(info, true) {
+      height: px-to-rem(56);
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    @include element(action, true) {
+      margin-left: auto;
+    }
+    @include element(label, true) {
+      margin-right: 0.5em;
+    }
+  }
+
+  @include state(disabled) {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+@include block(ns(AddressPanelSelectedInfo)) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  @include element(map) {
+    flex: 1;
+  }
+  @include element(label) {
+    height: px-to-rem(56);
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  @include element(mapPlaceholder) {
+    width: 100%;
+    height: 100%;
+    background-color: $gray-1;
+  }
+}
+
+// mobile panel
+
+@include block(MAddressPanel) {
+}
+
+@include block(MAddressSelectOption) {
+  padding: 8px 12px 8px 8px;
+  @include modifier(momentPlace) {
+    display: flex;
+  }
+  @include element(label) {
+    display: inline-flex;
+    align-items: center;
+  }
+  .ft-OptionSymbol {
+    margin-right: 8px;
+  }
+  @include element(content) {
+    padding-left: 28px;
+  }
+  @include element(footer) {
+    display: flex;
+    padding-left: 20px;
+  }
+}

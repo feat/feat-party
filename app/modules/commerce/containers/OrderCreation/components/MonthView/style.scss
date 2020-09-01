@@ -1,0 +1,226 @@
+@import 'base.scss';
+
+@include block(MonthView) {
+  display: flex;
+  justify-content: space-between;
+  @include element(left) {
+    flex-basis: 48%;
+    position: relative;
+  }
+  @include element(right) {
+    flex-basis: 48%;
+    position: relative;
+  }
+  @include element(weekdays) {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    // padding-left: px-to-rem(54);
+    padding-left: px-to-rem(5);
+    span {
+      width: percentage(1/7);
+      font-weight: bold;
+    }
+  }
+
+  @include element(compo) {
+    // display: flex;
+    margin-bottom: px-to-rem(20);
+    padding-left: px-to-rem(54);
+
+    @include block(ns(Button, ft)) {
+      background: initial;
+      border: none;
+      font-size: px-to-rem(14);
+      &.is-selected {
+        background: $gray-10;
+      }
+    }
+
+    @include modifier(date) {
+      @include block(ns(Button, ft)) {
+        width: percentage(1/7);
+      }
+      @include element(label, true) {
+        margin-top: 1.5em;
+      }
+    }
+    @include modifier(hour) {
+      padding-right: percentage(1/8);
+      @include block(ns(Button, ft)) {
+        width: percentage(1/6);
+      }
+    }
+    @include modifier(minute) {
+      padding-right: percentage(1/8);
+      @include block(ns(Button, ft)) {
+        width: percentage(1/6);
+      }
+    }
+  }
+
+  @include element(optionSelect) {
+    border-left: px-to-rem(5) solid $gray-10;
+  }
+
+  // @include element(time) {
+  //   @include block(ns(Button, ft)) {
+  //     width: percentage(1/6);
+  //     background: initial;
+  //     border: none;
+  //     font-size: px-to-rem(14);
+  //     &.is-selected {
+  //       background: $gray-10;
+  //     }
+  //   }
+
+  //   @include modifier(hours) {
+  //     display: flex;
+  //     padding-right: percentage(1/8);
+  //     margin-bottom: px-to-rem(20);
+  //   }
+  //   @include modifier(minutes) {
+  //     padding-right: percentage(1/8);
+  //     display: flex;
+  //   }
+  // }
+
+  @include element(label) {
+    position: absolute;
+    // min-width: px-to-rem(50);
+    transform: translateX(calc(-100% - 10px));
+    text-transform: capitalize;
+    text-align: right;
+    // border-right: px-to-rem(5) solid $gray-10;
+  }
+
+  @include element(prompt) {
+    font-size: px-to-rem(14);
+    width: 85%;
+    margin: 0 auto;
+    padding-left: px-to-rem(10);
+  }
+
+  @include element(show) {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  @include state(mobile) {
+    @include element(left, true) {
+      flex: 1;
+    }
+    @include element(right, true) {
+      display: none;
+    }
+    .MonthView__compo_minute {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@include block(DatePicker) {
+  position: relative;
+  @include element(date) {
+    .ft-FlatDatePicker__option_month {
+      width: 12%;
+    }
+    @include modifier(line) {
+      -webkit-appearance: none;
+      outline: none;
+      width: 100%;
+      height: 3px;
+      background: $gray-8;
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: px-to-rem(2);
+        height: px-to-rem(20);
+        background: $color-secondary;
+        border-radius: 0;
+        margin-bottom: px-to-rem(10);
+        cursor: pointer;
+        box-shadow: 3px 2px 4px $gray-10;
+        display: block;
+        &::before {
+          content: '';
+          width: 14px;
+          height: 14px;
+          background: skyblue;
+          display: block;
+          position: absolute;
+          left: 10px;
+        }
+      }
+    }
+    @include modifier(time) {
+      font-size: px-to-rem(48);
+      color: $color-secondary;
+      position: absolute;
+      top: 50%;
+      left: 25%;
+      background: $gray-0;
+      padding: 0 px-to-rem(20);
+      opacity: 0.8;
+    }
+    @include modifier(label) {
+      font-size: px-to-rem(12);
+    }
+  }
+
+  @include element(show) {
+    width: 85%;
+    margin: 0 auto;
+    background: #fec72e;
+    text-align: center;
+    padding: px-to-rem(10);
+    border-radius: px-to-rem(6);
+    display: flex;
+
+    @include modifier(box) {
+      background: $gray-10;
+      color: $gray-0;
+      font-size: px-to-rem(14);
+      line-height: px-to-rem(16);
+      padding: px-to-rem(4);
+      margin-left: 2px;
+      margin-right: 2px;
+      border-radius: 4px;
+    }
+    @include modifier(dot) {
+      padding: 0 px-to-rem(6);
+    }
+    @include modifier(date) {
+      font-size: px-to-rem(14);
+      margin-left: 2px;
+      margin-right: 2px;
+    }
+  }
+  @include element(disableTime) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 85%;
+    margin: 0 auto;
+    padding-left: px-to-rem(10);
+  }
+  @include element(disable) {
+    padding-bottom: px-to-rem(10);
+    @include modifier(box) {
+      background: $gray-10;
+      color: $gray-0;
+      font-size: px-to-rem(14);
+      line-height: px-to-rem(16);
+      padding: px-to-rem(4);
+      border-radius: 4px;
+    }
+    @include modifier(dot) {
+      padding: 0 px-to-rem(6);
+    }
+    @include modifier(prompt) {
+      font-size: px-to-rem(14);
+      padding-bottom: px-to-rem(5);
+      flex-basis: 100%;
+    }
+  }
+}

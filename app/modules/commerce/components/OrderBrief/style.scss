@@ -1,0 +1,12 @@
+@import 'base.scss';
+
+@include block(ns(OrderBrief, ft)) {
+
+  @include element(row) {
+    margin-bottom: 12px;
+
+    .ft-NoticeWell {
+        display: inline-block;
+    }
+  }
+}

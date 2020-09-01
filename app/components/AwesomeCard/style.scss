@@ -1,0 +1,65 @@
+@import 'base.scss';
+
+$awesome-card-title-font-size: 32px;
+$awesome-card-font-size: 16px;
+
+@include block(ns(AwesomeCard)) {
+  background-color: white;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  height: 100%;
+
+  @include modifier(nightTheme) {
+    background-color: $gray-10;
+    color: white;
+
+    @include block(WeekdayWidget) {
+      @include element(item) {
+        @include state(selected) {
+          .icon-weekday__circle {
+            fill: $gray-0;
+            stroke: $gray-0;
+          }
+          .icon-weekday__char {
+            fill: $gray-10;
+          }
+        }
+      }
+    }
+  }
+
+  @include element(header) {
+    margin-bottom: 0.5em;
+    padding: px-to-rem(4) px-to-rem(12) 0 px-to-rem(12);
+  }
+  @include element(title) {
+    font-size: px-to-rem($awesome-card-title-font-size);
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  @include element(date) {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  @include element(desc) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  @include element(content) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 px-to-rem(12) px-to-rem(12) px-to-rem(12);
+  }
+  @include element(avatarStamp) {
+    max-width: calc(100% - 100px);
+  }
+  @include element(openRange) {
+    font-size: px-to-rem(18);
+    flex-shrink: 0;
+  }
+  .ft-AvatarStamp__separator {
+    display: none;
+  }
+}

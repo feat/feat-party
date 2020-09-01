@@ -1,0 +1,32 @@
+@import 'base.scss';
+
+@include block(AvatarPreview) {
+  position: relative;
+  margin-bottom: px-to-rem(18);
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+  border: 1px solid $gray-4;
+
+  @include element(preview) {
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  @include element(cropContainer) {
+    @include poplayer-style;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    max-width: px-to-rem(480);
+    width: 200%;
+    padding: px-to-rem(12);
+    z-index: 1000;
+  }
+
+  @include element(cropControls) {
+    margin-top: px-to-rem(12);
+    display: flex;
+    justify-content: flex-end;
+  }
+}

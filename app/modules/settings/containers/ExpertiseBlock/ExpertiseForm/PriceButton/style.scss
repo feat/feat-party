@@ -1,0 +1,85 @@
+@import 'base.scss';
+.PriceButton {
+    position: relative;
+    display: flex;
+    align-items: center;
+    // height: 3.5rem;
+    // margin-top: 0.75rem;
+    box-sizing: border-box;
+
+    padding: px-to-rem(8) px-to-rem(8) px-to-rem(9);
+    font-size: 1rem;
+    // border-radius: 0.625rem;
+    line-height: 1.75rem;
+    // background-color: #F6F6F6;
+    border-bottom: 1px dashed $gray-6;
+    
+    &.is-active {
+        border-bottom: 2px solid $input-active-color;
+        padding-bottom: px-to-rem(8);
+    }
+
+    &_btn {
+        cursor: pointer;
+        @include btn-animation();
+    }
+
+    &__typeLabel {
+        max-width: px-to-rem(80);
+        @include text-truncate();
+        margin-right: 1em;
+    }
+
+    &__unitLabel {
+        padding-left: 3px;
+        padding-right: 3px;
+        padding-top: 0; 
+        padding-bottom: 0;
+        margin-right: 3px;
+    }
+
+    &__label {
+        display: flex;
+        height: 1.125rem;
+        line-height: 1.1;
+        font-size: 0.875rem;
+        align-items: center;
+        justify-content: space-between;
+        flex-shrink: 0;
+    }
+
+    &__price {
+        display: block;
+        font-size: 1.25rem;
+        padding-right: 3px;
+        text-align: right;
+    }
+
+    &__priceInput {
+        max-width: 100%;
+        border: none;
+        text-align: right;
+        font-size: 1.25rem;
+        padding-right: 3px;
+        box-sizing: border-box;
+        line-height: 1.75rem;
+        text-align: right;
+        min-width: 0;
+        flex: 1;
+        &:focus {
+            outline: none;
+            &::placeholder {
+                opacity: 0.5;
+            }
+        }
+        &::placeholder {
+            opacity: 1;
+        }
+    }
+
+    .ft-Button_sm {
+        font-size: inherit;
+        height: auto;
+        line-height: 1;
+    }
+}

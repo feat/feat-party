@@ -1,0 +1,15 @@
+@import 'base.scss';
+
+@include block(UserPage) {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include element(option) {
+    width: 10%;
+    padding: px-to-rem(8);
+  }
+  @include element(label) {
+    font-size: px-to-rem(24);
+    padding: px-to-rem(12) px-to-rem(24);
+  }
+}

@@ -1,0 +1,101 @@
+@import 'base.scss';
+
+@include block(ns(ContactWrap, IM)) {
+  @include modifier(groupMember) {
+    padding-left: px-to-rem(12);
+    padding-right: px-to-rem(12);
+    padding-top: px-to-rem(2);
+    padding-bottom: px-to-rem(2);
+  }
+}
+
+@mixin member-active {
+  background-color: #D9EEFC;
+  border: 1px solid #5BB7E4;
+  border-radius: px-to-rem(8);
+}
+@include block(ns(Contact, IM)) {
+  @include modifier(groupMember) {
+    border: 1px solid transparent;
+
+    &:hover {
+      .IM-Contact__removeBtn {
+        opacity: 1;
+      }
+      .IM-Contact__restoreBtn {
+        opacity: 1;
+      }
+    }
+
+    @include state(clickable, js) {
+      &:hover {
+        @include member-active;
+      }
+    }
+
+    @include state(active) {
+      @include member-active;
+      & > #{"." + ns(Contact, IM) + $element-separator + "container"} {
+          background-color: transparent;
+      }
+    }
+
+    @include state(removed) {
+      @include element(container, true) {
+        opacity: .5;
+      }
+
+      &:hover {
+        cursor: default;
+        background-color: transparent;
+        border-color: transparent;
+      }
+    }
+
+    @include element(name, true) {
+      font-size: px-to-rem(14);
+      line-height: px-to-rem(18);
+    }
+
+    @include element(meta, true) {
+      line-height: px-to-rem(18);
+    }
+    @include element(container, true) {
+      position: relative;
+      padding: px-to-rem(5);
+      box-sizing: border-box;
+      align-items: center;
+      background-color: transparent;
+    }
+
+    @include element(removeBtn, true) {
+      position: absolute;
+      width: px-to-rem(20);
+      height: px-to-rem(20);
+      top: px-to-rem(-10);
+      right: px-to-rem(6);
+      opacity: 0;
+    }
+
+    @include element(restoreBtn, true) {
+      position: absolute;
+      width: px-to-rem(20);
+      height: px-to-rem(20);
+      top: px-to-rem(-10);
+      right: px-to-rem(6);
+      opacity: 0;
+    }
+
+    @include element(label, true) {
+      color: white;
+      background-color: $gray-10;
+      display: inline-block;
+      padding-left: 3px;
+      padding-right: 3px;
+      border-radius: 2px;
+      margin-left: 5px;
+      font-size: 12px;
+    }
+
+  }
+}

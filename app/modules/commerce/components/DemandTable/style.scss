@@ -1,0 +1,45 @@
+@import 'base.scss';
+
+@include block(ns(DemandTable, cm)) {
+  padding-top: px-to-rem(12);
+  @include element(header) {
+    padding-left: px-to-rem(24);
+    padding-right: px-to-rem(24);
+
+  }
+  @include element(headerInner) {
+    border-bottom: 4px solid $gray-10;
+    height: px-to-rem(36);
+    display: flex;
+    padding-left: 33%;
+    align-items: flex-end;
+    font-weight: bold;
+  }
+  @include element(content) {
+    padding-left: px-to-rem(24);
+    padding-right: px-to-rem(24);
+    padding-bottom: px-to-rem(24);
+  }
+  @include element(footer) {
+    background-color: $gray-3;
+    padding-top: px-to-rem(8);
+    padding-bottom: px-to-rem(8);
+    padding-left: px-to-rem(24);
+    padding-right: px-to-rem(24);
+    display: flex;
+  }
+  @include element(actions) {
+    margin-left: auto;
+  }
+  @include element(col) {
+    @include modifier(part) {
+      flex-basis: 50%;
+    }
+    @include modifier(location) {
+      flex-basis: 30%;
+    }
+    @include modifier(cost) {
+      margin-left: auto;
+    }
+  }
+}

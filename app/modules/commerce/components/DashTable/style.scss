@@ -1,0 +1,9 @@
+@import 'base.scss';
+
+$dash-table-min-height: 70vh;
+@include block(ns(DashTable, cm)) {
+  @include element(content) {
+    min-height: $dash-table-min-height;
+    position: relative;
+  }
+}

@@ -1,0 +1,14 @@
+@import 'base.scss';
+
+@include block(ns(CardBrandButton, cm)) {
+  width: 60px;
+  height: 40px;
+  padding: 4px;
+  line-height: 0;
+
+  @include state(selected) {
+    border-width: 2px;
+    border-color: $input-active-color;
+    background-color: $btn-default-bg-color;
+  }
+}

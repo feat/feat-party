@@ -1,0 +1,34 @@
+@import 'base.scss';
+
+@include block(WcBinding) {
+  @include element(qrCode) {
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+  }
+  @include element(textWrap) {
+    margin-top: px-to-rem(12);
+    text-align: center;
+  }
+  @include element(text) {
+    margin: 0;
+    @include modifier(primary) {
+      font-size: px-to-rem(18);
+      color: $text-color;
+    }
+    @include modifier(hint) {
+      font-size: px-to-rem(14);
+      color: $gray-8;
+      margin-top: .5em;
+    }
+    @include modifier(label) {
+      margin-bottom: .5em;
+    }
+  }
+  @include element(accountInfo) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

@@ -1,0 +1,23 @@
+@import 'base.scss';
+
+@include block(WorkplaceMap) {
+  display: flex;
+  flex-direction: column;
+  @include element(canvas) {
+    flex: 1;
+  }
+  @include element(address) {
+    flex-shrink: 0;
+    background-color: white;
+    padding: px-to-rem(12) px-to-rem(12);
+  }
+  @include element(marker) {
+    background-image: url('~!url-loader!@/images/marker.svg');
+    background-size: contain;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    width: px-to-rem(20);
+    height: px-to-rem(28);
+    display: block;
+  }
+}

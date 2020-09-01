@@ -1,0 +1,83 @@
+@import 'base.scss';
+
+
+@include block(ns(AuthorizeForm, oa)) {
+  width: 80%;
+  max-width: 520px;
+  margin: 0 auto;
+  background-color: white;
+  border: 1px solid $gray-3;
+  padding: 8px 24px 16px;
+
+  @include element(title) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  @include element(footer) {
+    margin-top: 16px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @include element(section) {
+    margin-bottom: 12px;
+  }
+
+  @include element(label) {
+    font-weight: bold;
+    margin-top: .3em;
+    margin-bottom: .2em;
+    padding-left: 5px;
+  }
+
+  @include element(scopeItem) {
+    display: block;
+    padding: 8px 12px;
+    border-bottom: 1px dashed $gray-3;
+    &:hover {
+      background-color: $gray-1;
+    }
+  }
+
+  label > input {
+    margin-right: 10px;
+  }
+
+  // Landscape Phones
+  @media(min-width: $screen-xs-min){
+
+  }
+
+  // Portrait Tablets & Small Desktop
+  @media(min-width: $screen-sm-min){
+
+  }
+  // Landscape Tablets & Medium Desktop
+  @media(min-width: $screen-md-min){
+    // margin-top: -100px;
+    margin-bottom: 100px;
+  }
+  // Large Desktop
+  @media(min-width: $screen-lg-min){
+    // margin-top: -20vh;
+    margin-bottom: 20vh;
+  }
+  // Extra Large Desktop
+  @media(min-width: $screen-xl-min){
+
+  }
+  // Extreme Large Desktop
+  @media(min-width: $screen-xxl-min){
+
+  }
+}
+
+.p-AuthorizeLayout {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  flex: 1;
+}
+
+

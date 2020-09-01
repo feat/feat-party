@@ -1,0 +1,135 @@
+@import 'base.scss';
+
+@include block(ns(OpportunityItem, cm)) {
+  height: px-to-rem(380);
+  border-bottom: 1px solid $gray-10;
+  position: relative;
+  padding-top: px-to-rem(8);
+  padding-bottom: px-to-rem(8);
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  @include element(main) {
+    display: flex;
+    height: 100%;
+  }
+
+  @include element(info) {
+    flex-basis: 33%;
+    min-width: 0;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    padding-right: px-to-rem(24);
+
+  }
+
+  @include element(biddingInfo) {
+    flex-basis: 67%;
+    min-width: 0;
+    flex-grow: 0;
+    display: flex;
+  }
+
+  @include element(field) {
+    // margin-bottom: .5em;
+    padding-left: px-to-rem(2);
+    @include modifier(remain) {
+      @include element(fieldValue, true) {
+        color: $color-danger;
+      }
+    }
+  }
+
+  @include element(images) {
+    padding-top: px-to-rem(12);
+  }
+
+  @include element(fieldLabel) {
+    font-weight: bold;
+    margin-right: .8em;
+    width: px-to-rem(120);
+    flex-shrink: 0;
+  }
+
+  @include element(publisher) {
+    padding-left: px-to-rem(2);
+  }
+
+
+  @include element(col) {
+    display: flex;
+    flex-direction: column;
+
+    flex-basis: 50%;
+    min-width: 0;
+    flex-grow: 0;
+
+    @include modifier(place) {
+      @include element(colContent, true) {
+
+      }
+    }
+
+    @include modifier(party) {
+      @include element(field, true) {
+        display: flex;
+      }
+    }
+  }
+
+  @include element(colHeader) {
+    border-bottom: 2px solid $gray-10;
+    padding-left: px-to-rem(8);
+    margin-top: px-to-rem(4);
+    font-weight: bold;
+    font-size: px-to-rem(17);
+  }
+
+  @include element(colContent) {
+    flex: 1;
+    padding-left: px-to-rem(12);
+    padding-right: px-to-rem(12);
+    padding-top: px-to-rem(10);
+    position: relative;
+  }
+  @include element(actions) {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: px-to-rem(12);
+    padding-top: px-to-rem(5);
+  }
+
+  @include element(title) {
+    margin-top: 0;
+    margin-bottom: 0.2em;
+    line-height: 1.1;
+    min-height: 2em;
+  }
+  @include element(desc) {
+    flex: 1;
+    padding-left: px-to-rem(2);
+    max-height:8em;
+    overflow: auto;
+  }
+  @include element(map) {
+    position: relative;
+    height: 100%;
+
+    & > .DirectionMap {
+      height: 100%;
+    }
+  }
+  span + .cm-OpportunityBidWidget {
+    margin-top: px-to-rem(8);
+  }
+
+  &.has-abandoned,
+  &.has-expired,
+  &.has-ignored,
+  &.has-canceled {
+    filter: grayscale(100%);
+  }
+}

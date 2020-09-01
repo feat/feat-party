@@ -1,0 +1,151 @@
+@import 'base.scss';
+
+@include block(ns(OrderInfo)) {
+  position: relative;
+  font-size: px-to-rem(20);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: px-to-rem(10);
+
+  @include modifier(payment) {
+    @include element(row, true) {
+      margin-bottom: px-to-rem(12);
+      @include modifier(price) {
+        margin-top: px-to-rem(0);
+      }
+    }
+  }
+
+  @include element(main) {
+    display: flex;
+  }
+
+  @include element(left) {
+    flex-basis: 40%;
+    min-width: 0;
+    flex-shrink: 0;
+  }
+
+  @include element(right) {
+    flex-basis: 50%;
+    min-width: 0;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  @include element(row) {
+    margin-bottom: px-to-rem(8);
+    @include modifier(inline) {
+      display: flex;
+    }
+
+    @include modifier(price) {
+      display: flex;
+      justify-content: space-between;
+      margin-top: auto;
+      @include state(address, has) {
+        margin-top: px-to-rem(0);
+      }
+    }
+    @include modifier(address) {
+      font-size: px-to-rem(16);
+    }
+  }
+
+  @include element(title) {
+    font-size: px-to-rem(24);
+    font-weight: medium;
+    line-height: 1.5;
+  }
+
+  @include element(label) {
+    margin-bottom: px-to-rem(8);
+    margin-right: px-to-rem(12);
+    flex-shrink: 0;
+  }
+
+  @include element(content) {
+    overflow: hidden;
+  }
+
+  @include element(hint) {
+    font-size: px-to-rem(16);
+  }
+  @include element(notice) {
+    font-size: px-to-rem(16);
+    flex-shrink: 1;
+    max-width: 40%;
+    // color: $gray-5;
+  }
+  @include element(priceInfo) {
+    // flex-grow: 1;
+    // text-align: right;
+    flex-shrink: 0;
+    min-width: 40%;
+    margin-right: px-to-rem(24);
+  }
+  @include element(bankCharge) {
+    display: inline-block;
+    line-height: 1.8;
+    border-bottom: 1px solid $gray-10;
+  }
+  @include element(total) {
+    margin-top: px-to-rem(5);
+    font-size: px-to-rem(22);
+  }
+  @include element(totalPrice) {
+    color: $color-secondary;
+    margin-left: px-to-rem(12);
+  }
+
+  .BookingInfo {
+    font-size: px-to-rem(16);
+  }
+}
+
+
+@include block(OrderInfoBooking) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include element(time) {
+  }
+  @include element(period) {
+    font-size: px-to-rem(21);
+  }
+}
+
+@include block(BookingTimeItem) {
+  @include element(symbol) {
+    display: inline-block;
+    transform: scale(0.7);
+    transform-origin: top right;
+  }
+  @include element(compo) {
+    display: inline-block;
+    background-color: $gray-10;
+    color: white;
+    border-radius: px-to-rem(4);
+    padding-left: px-to-rem(2);
+    padding-right: px-to-rem(2);
+    margin-left: px-to-rem(2);
+    margin-right: px-to-rem(2);
+  }
+}
+
+@include block(ns(OrderPriceInfo)) {
+  min-width: px-to-rem(320);
+  font-size: px-to-rem(18);
+  @include element(item) {
+    display: flex;
+    justify-content: space-between;
+  }
+  @include element(separator) {
+    width: 100%;
+    height: px-to-rem(4);
+    background: $gray-10;
+    margin-top: px-to-rem(5);
+    margin-bottom: px-to-rem(5);
+  }
+}

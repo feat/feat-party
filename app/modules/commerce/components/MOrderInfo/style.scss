@@ -1,0 +1,60 @@
+@import 'base.scss';
+
+@include block(MOrderInfo) {
+  @include element(title) {
+    font-size: 24px;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  @include element(field) {
+    margin-bottom: 8px;
+
+    @include modifier(inline) {
+      display: flex;
+    }
+    @include modifier(date) {
+      display: flex;
+    }
+  }
+
+  @include element(meta) {
+    font-size: 14px;
+    color: $gray-8;
+  }
+  .ft-NoticeWell {
+    padding: 8px;
+    min-width: 0;
+    flex-shrink: 0;
+    margin-right: 8px;
+  }
+  @include element(notice) {
+    font-size: 14px;
+    color: $gray-8;
+  }
+  @include element(separator) {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px dashed $gray-8;
+  }
+
+  @include element(priceInfo) {
+    margin-bottom: 12px;
+  }
+  @include element(priceItem) {
+    display: flex;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+  @include element(priceItemLabel) {
+    flex-basis: 40%;
+    // text-align: right;
+  }
+  @include element(priceSeparator) {
+    border-top: 1px dashed $gray-4;
+  }
+  @include element(priceItemValue) {
+    flex: 1;
+    // text-align: right;
+  }
+}

@@ -1,0 +1,60 @@
+@import 'base.scss';
+
+@include block(ns(ContactButtonWrap, IM)) {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  line-height: 0;
+}
+
+@include block(ns(ContactStatus, IM)) {
+  width: px-to-rem(14);
+  height: px-to-rem(14);
+  border-radius: 50%;
+  background-color: $gray-8;
+  padding: 0;
+  text-align: center;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transform: translate3d(30%, 0, 0);
+
+  @include modifier(info) {
+      background-color: #00c3f0;
+      &::before {
+          content: "!";
+      }
+  }
+  @include modifier(pending) {
+      background-color: $color-warning;
+      &::before {
+          content: "?";
+      }
+  }
+  @include modifier(rejected) {
+      background-color: $color-danger;
+      &::before {
+          content: "-";
+      }
+  };
+}
+
+@include block(ns(ContactRelationMessage, IM)) {
+  width: px-to-rem(250);
+  @include element(content) {
+    min-height: px-to-rem(90);
+  }
+  @include element(title) {
+    margin-top: 0;
+    margin-bottom: .25em;
+    font-size: px-to-rem(16);
+    font-family: $sans-serif-title-font;
+  }
+  @include element(desc) {
+    font-size: px-to-rem(14);
+  }
+  @include element(footer) {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

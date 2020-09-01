@@ -1,0 +1,143 @@
+@import 'base.scss';
+$contact-height: 56px;
+
+@include block(ns(ContactWrap, IM)) {
+  @include clearfix;
+  position: relative;
+  border: 1px solid transparent;
+  width: 100%;
+  @include modifier(group) {
+    border-radius: px-to-rem(12);
+    @include state(active) {
+      border: 1px solid $gray-4;
+    }
+  }
+  @include state(active) {
+    background-color: $gray-2;
+  }
+}
+@include block(ns(ContactLoading, IM)) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+@include block(ns(Contact, IM)) {
+  @include element(container) {
+    display: flex;
+    box-sizing: border-box;
+    // height: px-to-rem($contact-height);
+    padding-top: px-to-rem(7);
+    padding-bottom: px-to-rem(9);
+
+    padding-left: px-to-rem(12);
+    padding-right: px-to-rem(12);
+
+    &:hover {
+      background-color: $gray-1;
+    }
+  }
+
+  @include element(titleContainer) {
+    display: flex;
+    min-width: 0;
+    flex-grow: 1;
+    padding-right: px-to-rem(5);
+    // @include text-truncate();
+  }
+  @include element(rightTitleContainer) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    max-width: px-to-rem(80);
+  }
+
+  @include element(avatar) {
+    margin-right: px-to-rem(10);
+    .ft-Avatar {
+      width: px-to-rem(40);
+      height: px-to-rem(40);
+    }
+  }
+
+  @include element(info) {
+    min-width: 0;
+    flex-grow: 1;
+    font-size: 0;
+    @include text-truncate();
+  }
+
+  @include element(name) {
+    display: inline-block;
+    font-size: px-to-rem(16);
+    line-height: px-to-rem(24);
+    @include state(action, has) {
+      &:hover {
+        color: $color-secondary;
+      }
+    }
+  }
+
+  @include element(meta) {
+    font-size: px-to-rem(14);
+    line-height: px-to-rem(16);
+    color: $gray-6;
+
+    @include modifier(location) {
+      display: inline-block;
+      line-height: px-to-rem(20);
+      height: px-to-rem(20);
+      width: 100%;
+      text-align: right;
+      @include text-truncate;
+    }
+    @include modifier(localTime) {
+      display: inline-block;
+      text-align: right;
+      line-height: px-to-rem(20);
+    }
+  }
+
+  @include state(over) {
+    outline: 1px solid rgba(128, 200, 128, 0.4);
+    background-color: rgba(128, 200, 128, 0.4);
+  }
+
+  // update widget
+  .ft-Badge .ft-Badge__count {
+    font-size: px-to-rem(12);
+  }
+
+  @include modifier(group) {
+    @include state(active) {
+      @include element(container, true) {
+        &:hover {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  @include modifier(user) {
+    @include state(active) {
+      @include element(container, true) {
+        background-color: $gray-2;
+        &:hover {
+        }
+      }
+    }
+  }
+
+  @include modifier(feat) {
+    @include state(active) {
+      @include element(container, true) {
+        background-color: $gray-2;
+        &:hover {
+        }
+      }
+    }
+  }
+}

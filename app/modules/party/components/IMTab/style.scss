@@ -1,0 +1,51 @@
+@import 'base.scss';
+
+@include block(ns(Tab, IM)) {
+  width: px-to-rem(110);
+  .ft-TabItem__label {
+    display: inline-block;
+    width: px-to-rem(56);
+    font-size: px-to-rem(15);
+    font-family: inherit;
+    opacity: 0.4;
+  }
+  @include modifier(inbox) {
+    .ft-TabItem__bg {
+      fill: #90c8ff;
+      // fill: #c1ddf9;
+      // fill: #a8dcf9;
+      //fill: #a1d7ed;
+      // fill: #87CEFA;
+      // fill: #1673BA;
+      stroke-width: 1px;
+      stroke: none;
+      opacity: 0.85;
+    }
+  }
+  @include modifier(archive) {
+    .ft-TabItem__bg {
+      fill: #ffc8d1;
+      // fill: #ffdfe4;
+      // fill: #ffd4db;
+      // fill: #C1272D;
+      //fill: #c5c0d5;
+      // stroke-width: 1px;
+      stroke: none;
+      opacity: 0.85;
+    }
+  }
+  @include state(over) {
+    .ft-TabItem__bg {
+      fill: rgba(128, 200, 128, 0.4);
+    }
+  }
+
+  @include state(active) {
+    .ft-TabItem__label {
+      opacity: 1;
+    }
+    .ft-TabItem__bg {
+      opacity: 1;
+    }
+  }
+}

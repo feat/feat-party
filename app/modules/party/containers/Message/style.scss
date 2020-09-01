@@ -1,0 +1,18 @@
+@import 'base.scss';
+@include block(Party) {
+  @include element(Order) {
+    padding: px-to-rem(6) px-to-rem(4);
+    @include modifier(number) {
+      font-size: px-to-rem(14);
+    }
+    @include modifier(status) {
+      font-size: px-to-rem(12);
+      display: flex;
+      justify-content: space-between;
+    }
+    @include modifier(label) {
+      font-weight: bold;
+      padding-right: px-to-rem(4);
+    }
+  }
+}

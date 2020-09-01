@@ -1,0 +1,48 @@
+import reducer from '../reducers/payment';
+import { setDefaultPaymentAccount, setDefaultReceiptAccount } from '../actions/payment';
+
+
+describe('Settings Reducer', () => {
+  describe('Payment Config', () => {
+    it('set default payment account', () => {
+      let state = {
+        payment: {
+          accounts: [
+            { id: 1, default_payment: true },
+            { id: 2, default_payment: false },
+          ],
+        },
+      };
+      const action = setDefaultPaymentAccount.success({
+        id: 2,
+        default_payment: true,
+      });
+
+      state = reducer(state, action);
+      expect(state.payment.accounts).toEqual([
+        { id: 1, default_payment: false },
+        { id: 2, default_payment: true },
+      ]);
+    });
+    it('set default receipt account', () => {
+      let state = {
+        payment: {
+          accounts: [
+            { id: 1, default_receipt: true },
+            { id: 2, default_receipt: false },
+          ],
+        },
+      };
+      const action = setDefaultReceiptAccount.success({
+        id: 2,
+        default_receipt: true,
+      });
+
+      state = reducer(state, action);
+      expect(state.payment.accounts).toEqual([
+        { id: 1, default_receipt: false },
+        { id: 2, default_receipt: true },
+      ]);
+    });
+  });
+});

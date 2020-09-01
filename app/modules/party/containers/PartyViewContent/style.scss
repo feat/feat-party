@@ -1,0 +1,39 @@
+@import 'base.scss';
+
+@include block(ns(UserItem, IM)) {
+  width: px-to-rem(70);
+  padding: px-to-rem(5);
+  text-align: start;
+  @include btn-base;
+  @include btn-default-style;
+  border-radius: 4px;
+
+  @include element(avatar) {
+    display: block;
+    margin: 0 auto;
+    width: px-to-rem(54);
+    height: px-to-rem(54);
+  }
+  @include element(name) {
+    @include text-truncate();
+    height: px-to-rem(20);
+    margin-top: px-to-rem(5);
+    text-align: start;
+  }
+}
+
+@include block(ns(UserSlide, IM)) {
+  padding: 64px;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(64px, #{percentage(1/6)}));
+  grid-template-rows: repeat(auto-fill, minmax(86px, 20%));
+  grid-column-gap: 8px;
+
+  @include element(cell) {
+    .IM-UserItem {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}

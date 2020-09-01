@@ -1,0 +1,27 @@
+@import 'base.scss';
+
+@include block(ns(OrderCard, IM)) {
+  background-color: rgba(255, 255, 255, .3);
+  padding: px-to-rem(8) px-to-rem(12);
+  margin-top: .3em;
+  @include element(header) {
+    font-size: px-to-rem(18);
+    font-weight: bold;
+  }
+  @include element(user){
+    font-weight: bold;
+    font-size: px-to-rem(12);
+    @include modifier(label){
+      font-weight: initial;
+      display: inline-block;
+      min-width: px-to-rem(80);
+    }
+  }
+  @include element(provider){
+    @include modifier(icon){
+      margin-left: px-to-rem(4);
+      width: px-to-rem(14);
+      height: px-to-rem(14);
+    }
+  }
+}

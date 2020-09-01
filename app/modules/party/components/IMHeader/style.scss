@@ -1,0 +1,58 @@
+@import "base.scss";
+$im-header-main-height: 50px;
+
+@include block(ns(Header, IM)) {
+  height: px-to-rem($im-header-main-height);
+  // display: flex;
+  width: 100%;
+  padding: px-to-rem(5) px-to-rem(12);
+  @include element(container) {
+    display: flex;
+  }
+
+  @include element(titleContainer) {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  @include element(actionContainer) {
+    display: flex;
+    align-items: center;
+    padding-left: px-to-rem(12);
+    padding-right: px-to-rem(12);
+
+  }
+
+  @include element(info) {
+    overflow: hidden;
+  }
+
+  @include element(avatar) {
+    margin-right: px-to-rem(10);
+    .ft-Avatar {
+      width: px-to-rem(40);
+      height: px-to-rem(40);
+      pointer-events: none;
+    }
+  }
+
+  @include element(title) {
+    font-size: px-to-rem(18);
+    line-height: 1.2;
+    color: $color-secondary;
+    overflow: hidden;
+    @include text-truncate;
+
+    a {
+      color: inherit;
+    }
+    // text-overflow: ellipsis;
+  }
+  @include element(subTitle) {
+    font-size: px-to-rem(14);
+    margin-right: px-to-rem(24);
+    @include text-truncate();
+  }
+}

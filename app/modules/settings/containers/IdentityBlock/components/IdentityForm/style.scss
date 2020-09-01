@@ -1,0 +1,17 @@
+@import 'base.scss';
+
+@include block(IdentityForm) {
+  @include element(nameNotice) {
+    padding-left: 72px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    position: relative;
+  }
+  @include element(noticeIcon) {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    top: 8;
+    left: 8px;
+  }
+}

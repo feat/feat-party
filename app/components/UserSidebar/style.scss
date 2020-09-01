@@ -1,0 +1,67 @@
+@import 'base.scss';
+
+@include block(ns(UserSidebar, c)) {
+  @include element(header) {
+    font-size: px-to-rem(64);
+    font-family: $sans-serif-heading-font;
+    text-transform: uppercase;
+    padding-left: px-to-rem(24);
+    line-height: 1.1;
+    font-weight: bold;
+  }
+}
+
+@include block(ns(UserSidebarSection, c)) {
+    margin-top: px-to-rem(12);
+    margin-bottom: px-to-rem(24);
+    @include element(title) {
+        margin-left: px-to-rem(19);
+        margin-right: px-to-rem(24);
+        // margin-top: px-to-rem(24);
+        // margin-bottom: px-to-rem(12);
+        // padding-left: px-to-rem(5);
+        font-size: px-to-rem(24);
+        // border-bottom: 1px solid $border-color;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+    @include element(groupTitle) {
+      margin-left: px-to-rem(19);
+      margin-right: px-to-rem(24);
+    }
+    @include element(group) {
+      margin-bottom: px-to-rem(12);
+    }
+}
+
+@include block(ns(MenuItem, ds)) {
+    height: px-to-rem(44);
+    padding-top: px-to-rem(7);
+    padding-bottom: px-to-rem(7);
+    padding-left: px-to-rem(19);
+    padding-right: px-to-rem(24);
+    display: flex;
+  
+    @include state(current) {
+      font-weight: bold;
+    }
+  }
+  
+  @include block(ns(MenuLink, ds)) {
+    display: block;
+    text-align: left;
+    width: 100%;
+    text-transform: capitalize;
+    @include modifier(button) {
+      display: inline-block;
+      width: auto;
+      border: 1px solid $gray-10;
+      border-radius: 15px;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+    @include state(current) {
+      color: white;
+      background-color: $gray-10;
+    }
+  }

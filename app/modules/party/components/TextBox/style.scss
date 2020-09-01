@@ -1,0 +1,45 @@
+@import 'base.scss';
+
+@include block(ns(TextBox, IM)) {
+  position: relative;
+  background-color: white;
+  border-top: 1px solid $gray-3;
+
+  @include element(inner) {
+    max-height: 100px;
+    overflow: auto;
+    padding-left: px-to-rem(16);
+    padding-right: px-to-rem(12);
+    padding-top: px-to-rem(7);
+    padding-bottom: px-to-rem(9);
+  }
+
+  @include element(sendingHint) {
+    position: absolute;
+    display: flex;
+    top: px-to-rem(-16);
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, .5);
+    height: px-to-rem(16);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .DraftEditor-editorContainer {
+    min-height: 21px; // hack for safari: height may be 0 when composite input mode switch
+  }
+
+  .public-DraftEditorPlaceholder-inner {
+    text-indent: 1em;
+  }
+}
+
+@include block(ns(MessageMention, IM)) {
+  display: inline-block;
+  padding-left: px-to-rem(3);
+  padding-right: px-to-rem(3);
+  background-color: #D9EEFC;
+  border: 1px solid #5BB7E4;
+  border-radius: px-to-rem(2);
+}

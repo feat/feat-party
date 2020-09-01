@@ -1,0 +1,11 @@
+@import 'base.scss';
+
+@include block(ns(DateCountDown, cm)) {
+  display: inline-block;
+  display: inline-flex;
+  @include element(comp) {
+    display: inline-block;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+}

@@ -1,0 +1,35 @@
+@import 'base.scss';
+
+@include block(ns(OrderTransactionHistory, cm)) {
+  line-height: 1.5;
+  @include element(label) {
+    flex-basis: 18%;
+    flex-shrink: 1;
+    margin-right: px-to-rem(8);
+  }
+  @include element(content) {
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  @include state(mobile) {
+  }
+}
+
+@include block(ns(OrderTransactionRecord, cm)) {
+  display: flex;
+  @include element(step) {
+    width: px-to-rem(50);
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  @include state(mobile) {
+    @include element(step, true) {
+      display: none;
+    }
+    @include element(date, true) {
+      width: 120px;
+    }
+  }
+}

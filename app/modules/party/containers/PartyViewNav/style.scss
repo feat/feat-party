@@ -1,0 +1,38 @@
+@import 'base.scss';
+
+@include block(ns(PartyViewNav, IM)) {
+  padding-top: px-to-rem(12);
+  padding-bottom: px-to-rem(12);
+  padding-left: px-to-rem(10);
+  padding-right: px-to-rem(10);
+  overflow: hidden;
+  height: calc(100% - #{px-to-rem(24)};
+
+  &:hover {
+    overflow-y: auto;
+    padding-right: 0;
+  }
+
+  @include element(item) {
+    width: px-to-rem($im-party-view-nav-width - 20);
+    padding: px-to-rem(5);
+    @include btn-base;
+    @include btn-default-style;
+    border-radius: 4px;
+    margin-bottom: px-to-rem(8);
+    border-color: transparent;
+  }
+
+  @include element(itemAvatar) {
+    display: block;
+    width: px-to-rem($im-party-view-nav-width - 32);
+    height: px-to-rem($im-party-view-nav-width - 32);
+    @include modifier(user) {
+      border-radius: 50%;
+    }
+  }
+  @include element(itemLabel) {
+    @include text-truncate();
+    margin-top: px-to-rem(5);
+  }
+}

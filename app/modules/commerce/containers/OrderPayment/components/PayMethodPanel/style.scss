@@ -1,0 +1,187 @@
+@import 'base.scss';
+
+@include block(ns(PayMethodPanel, cm)) {
+  @include element(message) {
+    margin-top: 36px;
+    margin-bottom: 36px;
+    margin-left: 80px;
+    margin-right: 80px;
+    font-size: 18px;
+  }
+  @include element(methods) {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    transition: margin-top .3s ease, margin-bottom .3s ease;
+  }
+  @include element(option) {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  @include element(form) {
+    position: relative;
+  }
+  @include element(row) {
+    display: flex;
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+    // justify-content: center;
+    .ft-FormItem {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+  }
+  @include element(cardNumber) {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 366px;
+    flex-shrink: 0;
+    .ft-TextInput {
+      width: 100%;
+    }
+  }
+  @include element(expires) {
+    position: relative;
+    opacity: 0;
+    top: 12px;
+    left: 24px;
+    pointer-events: none;
+    width: 144px;
+
+  }
+  @include element(cvc) {
+    position: relative;
+    opacity: 0;
+    top: 12px;
+    left: 24px;
+    width: 120px;
+    pointer-events: none;
+  }
+
+  @include element(phone) {
+    position: relative;
+    opacity: 0;
+    top: 12px;
+    left: 24px;
+    pointer-events: none;
+    width: 366px;
+    flex-shrink: 0;
+  }
+  @include element(name) {
+    position: relative;
+    opacity: 0;
+    top: 12px;
+    left: 24px;
+    pointer-events: none;
+    width: 264px;
+  }
+
+  @include element(vCode) {
+    position: absolute;
+    width: 366px;
+    left: 50%;
+    transform: translate(-50%, 12px);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @include element(accountLoader) {
+    opacity: 0;
+    position: absolute;
+    right: 26px;
+    bottom: 18px;
+    @include state(visible) {
+      opacity: 1;
+    }
+  }
+
+  @include element(info) {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .ft-FeatModal__content {
+    overflow: hidden;
+  }
+
+  .ft-FormItem {
+    margin-bottom: 12px;
+    .ft-TextInput {
+      width: 100%;
+    }
+  }
+}
+
+.is-unionpay {
+  @include block(ns(PayMethodPanel, cm)) {
+    @include element(messages) {
+
+    }
+    @include element(methods) {
+      margin-top: 40px;
+      margin-bottom: 28px;
+    }
+    @include element(vCode) {
+      opacity: 1;
+      pointer-events: initial;
+      transform: translate(-50%);
+    }
+    @include element(sendCodeBtn) {
+      display: block;
+      margin: 0 auto;
+    }
+
+    @include element(error) {
+      text-align: center;
+      margin-top: .5em;
+    }
+  }
+}
+
+.is-visa,
+.is-mastercard {
+  @include block(ns(PayMethodPanel, cm)) {
+    @include element(messages) {
+
+    }
+    @include element(methods) {
+      margin-top: 40px;
+      margin-bottom: 28px;
+    }
+    @include element(cardNumber) {
+      left: 0;
+      transform: none;
+    }
+    @include element(expires) {
+      opacity: 1;
+      top: 0;
+      left: 0;
+      pointer-events: initial;
+    }
+    @include element(cvc) {
+      opacity: 1;
+      top: 0;
+      left: 0;
+      pointer-events: initial;
+    }
+    @include element(phone) {
+      opacity: 1;
+      top: 0;
+      left: 0;
+      pointer-events: initial;
+    }
+    @include element(name) {
+      opacity: 1;
+      top: 0;
+      left: 0;
+      pointer-events: initial;
+    }
+
+  }
+}

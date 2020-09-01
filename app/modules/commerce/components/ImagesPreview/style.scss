@@ -1,0 +1,15 @@
+@import 'base.scss';
+
+@include block(ns(ImagesPreview, cm)) {
+  display: flex;
+  @include element(item) {
+    width: 20%;
+    padding-left: px-to-rem(4);
+    padding-right: px-to-rem(4);
+  }
+  @include element(thumb) {
+    padding-top: 75%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}

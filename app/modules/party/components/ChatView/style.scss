@@ -1,0 +1,107 @@
+@import 'base.scss';
+
+@include block(ns(ChatView, IM)) {
+  width: 100%;
+  max-height: 100%;
+  display: flex;
+  position: relative;
+  @include element(Content) {
+    flex-basis: 50%;
+    min-width: 0;
+    flex-shrink: 0;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: top left;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid $gray-1;
+
+    @include modifier(inbox) {
+      // background: linear-gradient(to bottom, #87cefa, #ffffff);
+      background: linear-gradient(35deg, #fff 20%, #c1ddf9 80%);
+      // background:
+      //   linear-gradient(#b5d0ec, transparent),
+      //   linear-gradient(to top left, #549acc, transparent),
+      //   linear-gradient(to top right, #e2f2fd, transparent);
+      // background-blend-mode: screen;
+      // background-image: url('./images/inbox_bg.png');
+      background-size: cover;
+      //background-image: url("./images/Skyblue.svg");
+      .IM-MessageViewer {
+        // &::before {
+        //   background: linear-gradient(#87cefa, #87cefa);
+        //   // background-image: url('./images/inbox_bg.png');
+        //   background-size: cover;
+        // }
+      }
+    }
+
+    @include modifier(archive) {
+      // background-image: url('./images/archive_bg.png');
+      // background: linear-gradient(260deg, #ffb6c1, #ffffff 100%);
+      background: linear-gradient(35deg, #fff 20%, #ffdfe4 80%);
+      // background: linear-gradient(124deg, #EFE6F3, #edcece40 50%, transparent 100%),
+      // linear-gradient(to left, #FCEAE3 10%,  #F9F9EF 40%,  transparent 80%),
+      // linear-gradient(70deg, #e4f3f7, #daf7ff 20%, transparent 80%);
+
+      background-size: cover;
+      //background-image: url("./images/Sunsetpink.svg");
+      .IM-MessageViewer {
+        // &::before {
+        //   // background-image: url('./images/archive_bg.png');
+        //   background: linear-gradient(260deg, #ffb6c1, #fff1f1 100%);
+        //   background-size: cover;
+        // }
+      }
+    }
+  }
+  @include element(tabContainer) {
+    position: absolute;
+    top: px-to-rem(-26);
+    padding-left: px-to-rem(30);
+    flex-shrink: 0;
+  }
+  @include element(mainContent) {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    .IM-MessageViewer {
+      flex: 1;
+      // padding-top: px-to-rem(12);
+      overflow-y: auto;
+      &::before {
+        content: '';
+        position: sticky;
+        top: 0;
+        display: block;
+        height: px-to-rem(12);
+        background-size: 100% auto;
+        background-position: top left;
+      }
+    }
+  }
+  @include element(Roster) {
+    flex-basis: 50%;
+    flex-shrink: 0;
+    min-width: 0;
+    overflow: hidden;
+    padding-top: px-to-rem(42);
+  }
+
+  // Phone
+  @media (max-width: $screen-xxs-max) {
+    @include element(Roster) {
+      flex-basis: px-to-rem(74);
+      background: #fff;
+      padding-left: px-to-rem(3);
+      padding-right: px-to-rem(3);
+      z-index: 99;
+    }
+    @include element(Content) {
+      flex: 1;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@import 'base.scss';
+
+@include block(ns(MessageViewer, IM)) {
+  overflow-y: auto;
+
+  @include element(error) {
+    padding-left: px-to-rem(12);
+    padding-right: px-to-rem(12);
+    display: flex;
+  }
+
+  @include element(errorMessage) {
+    min-width: 0;
+    flex: 1;
+  }
+
+  // $new-message-hint-bg: #87CEFA;
+  $new-message-hint-bg: $color-secondary;
+
+  @include element(newHint) {
+    @include btn-base();
+    position: absolute;
+    bottom: 0px;
+    right: 20px;
+    background-color: $new-message-hint-bg;
+    border-radius: 6px;
+    color: white;
+    opacity: 0;
+    @include state(visible) {
+      opacity: 1;
+      bottom: 46px;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      left: 6px;
+      top: 100%;
+      border-top: 5px solid $new-message-hint-bg;
+      border-left: 2px solid transparent;
+      border-right: 6px solid transparent;
+      border-bottom: 0px solid transparent;
+    }
+  }
+
+  @include element(retryBtn) {
+    flex-strink: 0;
+  }
+  @include modifier(archive) {
+    padding-bottom: px-to-rem(12);
+  }
+
+  @include element(sendError) {
+    color: $color-error;
+  }
+}

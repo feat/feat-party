@@ -1,0 +1,30 @@
+@import 'base.scss';
+
+@include block(ns(PaymentAccountItem, st)) {
+  border-bottom: 1px dashed $gray-4;
+  position: relative;
+
+  @include element(main) {
+    padding-left: px-to-rem(5);
+    padding-right: px-to-rem(5);
+    padding-top: px-to-rem(4);
+    padding-bottom: px-to-rem(4);
+  }
+  @include element(actions) {
+    padding-left: px-to-rem(3);
+    padding-bottom: px-to-rem(4);
+  }
+}
+
+@include block(payment) {
+  @include element(form) {
+    position: relative;
+  }
+  @include element(alipay) {
+    position: absolute;
+    background: $gray-0;
+    top: 0;
+    left: -500px;
+    z-index: 9999;
+  }
+}

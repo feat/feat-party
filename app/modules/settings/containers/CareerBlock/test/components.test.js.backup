@@ -1,0 +1,67 @@
+import React from 'react';
+import { render, cleanup, fireEvent } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { IntlProvider } from 'react-intl';
+import 'jest-dom/extend-expect';
+
+import LanguageProvider from '@/modules/language/containers/LanguageProvider';
+
+import { configureStore } from '@/store';
+import { setLocale } from '@/modules/language/actions';
+import { setIntl } from '@/services/intl';
+
+import CareerBlock from '../index';
+
+describe('Settings - Components', () => {
+  let store;
+  beforeAll(() => {
+    store = configureStore({});
+    store.dispatch(setLocale({ locale: 'en' }));
+    const intlProvider = new IntlProvider({ locale: 'en', messages: {} });
+    const { intl } = intlProvider.getChildContext();
+    setIntl(intl);
+  });
+  afterEach(cleanup);
+
+  describe('CareerBlock', () => {
+    it('render', () => {
+      const handleFetchCareers = jest.fn();
+      const handleCreateCareer = jest.fn();
+      const handleDeleteCareer = jest.fn();
+      const { getByText, getByLabelText } = render(
+        <Provider store={store}>
+          <LanguageProvider locale="en" lastUpdatedAt="_TMP_" messages={{}}>
+            <CareerBlock
+              data={[]}
+              fetchCareers={handleFetchCareers}
+              createCareer={handleCreateCareer}
+              deleteCareer={handleDeleteCareer}
+            />
+          </LanguageProvider>
+        </Provider>,
+      );
+      const title = getByText('Career');
+      expect(title).toBeInTheDocument();
+      const sectionHint = getByText(
+        'Open your employment history to win people trust to you.',
+      );
+      expect(sectionHint).toBeInTheDocument();
+      const toggleBtn = getByLabelText('edit-toggle');
+      expect(toggleBtn).toBeInTheDocument();
+      expect(toggleBtn).toHaveTextContent('Add');
+      fireEvent.click(toggleBtn);
+      expect(toggleBtn).toHaveTextContent('Cancel');
+      // form label test
+      expect(getByText('Company')).toBeInTheDocument();
+      expect(getByText('Position')).toBeInTheDocument();
+      expect(getByText('Description')).toBeInTheDocument();
+      expect(getByText('Achievement')).toBeInTheDocument();
+      expect(getByText('Still working there')).toBeInTheDocument();
+      expect(getByText('Image')).toBeInTheDocument();
+      // TODO: fill form test
+      fireEvent.click(toggleBtn);
+      expect(toggleBtn).toHaveTextContent('Add');
+    });
+  });
+
+});

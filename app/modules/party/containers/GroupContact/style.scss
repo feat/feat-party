@@ -1,0 +1,35 @@
+@import "base.scss";
+
+@include block(ns(GroupContactRenameForm, IM)) {
+  display: flex;
+  margin-bottom: px-to-rem(2);
+
+  @include element(input) {
+    display: block;
+    min-width: 0;
+    width: 100%;
+    font-size: px-to-rem(16);
+    border-color: transparent;
+    background-color: $gray-1;
+    &:focus {
+      outline: none;
+      border-bottom-color: $gray-4;
+    }
+    @include state(invalid) {
+      background: transparentize(#cc0000, 0.7);
+      border-bottom-color: transparentize(#cc0000, 0.5);
+    }
+  }
+  @include element(confirm) {
+    flex-shrink: 0;
+    width: px-to-rem(22);
+    height: px-to-rem(22);
+    margin-left: px-to-rem(5);
+  }
+  @include element(cancel) {
+    flex-shrink: 0;
+    width: px-to-rem(22);
+    height: px-to-rem(22);
+    margin-left: px-to-rem(5);
+  }
+}

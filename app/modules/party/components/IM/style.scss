@@ -1,0 +1,161 @@
+@import 'base.scss';
+
+$im-container-width: 690px;
+$im-container-height: 687px;
+
+$im-header-sub-height: 25px;
+$im-header-background-color: $gray-1;
+$im-footer-height: 40px;
+$im-border-color: $gray-3;
+
+@include block(IM) {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+
+  @include element(header) {
+    // height: px-to-rem($im-header-height);
+    flex-shrink: 0;
+    background-color: $im-header-background-color;
+    border-bottom: 1px solid $im-border-color;
+  }
+  @include element(subHeader) {
+    flex-shrink: 0;
+    height: px-to-rem($im-header-sub-height);
+    border-bottom: 1px solid $im-border-color;
+    background-color: $im-header-background-color;
+  }
+  @include element(content) {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    .IM-ChatView {
+      flex: 1;
+      max-height: calc(100% - #{px-to-rem($im-header-sub-height)});
+    }
+  }
+  @include element(footer) {
+    display: flex;
+    align-items: center;
+    height: px-to-rem($im-footer-height);
+    flex-shrink: 0;
+    border-top: 1px solid $im-border-color;
+    background-color: $im-header-background-color;
+
+    .IM-RoomSearchForm {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      min-height: px-to-rem($im-footer-height);
+
+      .IM-RoomSearchInput {
+        border: none;
+        border-radius: 0;
+        border-top: 1px solid $im-border-color;
+        height: px-to-rem($im-footer-height);
+        width: 50%;
+        padding-left: px-to-rem(16);
+        padding-right: px-to-rem(12);
+        padding-top: px-to-rem(7);
+        padding-bottom: px-to-rem(12);
+
+        &::placeholder {
+          text-indent: 1em;
+        }
+      }
+      .IM-RoomSearchForm__picker {
+        // width: px-to-rem(180);
+        flex: 1;
+      }
+      .IM-RoomSearchForm__picker,
+      .IM-RoomSearchForm__reset {
+        height: px-to-rem($im-footer-height);
+        display: flex;
+        align-items: center;
+        padding-left: 6px;
+        padding-right: 6px;
+        font-size: px-to-rem(14);
+      }
+      .IM-RoomSearchForm__picker {
+        padding-left: 12px;
+      }
+      .IM-RoomSearchForm__reset {
+        padding-right: 12px;
+      }
+    }
+
+    @include modifier(TextBox) {
+      width: 50%;
+      position: absolute;
+      bottom: 0;
+      min-height: px-to-rem($im-footer-height);
+      .IM-TextBox {
+        min-height: px-to-rem($im-footer-height);
+        margin-right: 1px;
+      }
+    }
+  }
+  @include element(statusHint) {
+    color: $color-info;
+  }
+}
+
+@include block(ns(Wrap, IM)) {
+  position: fixed;
+  top: px-to-rem(80);
+  left: calc(100% - #{px-to-rem($im-container-width + 40)});
+  display: block;
+  width: px-to-rem($im-container-width);
+  height: 80vh;
+  max-height: px-to-rem($im-container-height);
+  font-size: px-to-rem(14);
+  background-color: #fff;
+  border: 1px solid $im-border-color;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 8000;
+
+  @include state(over) {
+    outline: 2px solid $input-active-color;
+  }
+}
+
+// Tablet
+@media (max-width: $screen-xs-max) {
+}
+
+// Phone
+@media (max-width: $screen-xxs-max) {
+  @include block(ns(Wrap, IM)) {
+    width: 100%;
+    max-height: initial;
+    height: initial;
+    top: px-to-rem(50);
+    left: 0;
+    bottom: px-to-rem(50);
+    box-shadow: none;
+    border: none;
+  }
+  @include block(IM) {
+    @include element(footer) {
+      display: none;
+    }
+  }
+}
+
+// Small Desktop
+@media (min-width: $screen-sm-min) {
+}
+// Medium Desktop
+@media (min-width: $screen-md-min) {
+}
+// Large Desktop
+@media (min-width: $screen-lg-min) {
+}
+// Extra Large Desktop
+@media (min-width: $screen-xl-min) {
+}
+// Extreme Large Desktop
+@media (min-width: $screen-xxl-min) {
+}

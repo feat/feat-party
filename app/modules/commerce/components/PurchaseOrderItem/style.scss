@@ -1,0 +1,130 @@
+@import 'base.scss';
+
+@include block(ns(PurchaseOrderBasic, cm)) {
+  display: flex;
+  min-height: px-to-rem(36);
+  align-items: center;
+  transition: color 0.3s ease, font-size 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $gray-1;
+  }
+
+  @include modifier(header) {
+    cursor: initial;
+    background-color: white;
+    &:hover {
+      background-color: white;
+    }
+    margin-bottom: px-to-rem(8);
+    border-bottom: px-to-rem(4) solid $gray-10;
+    .ft-Button {
+      font-size: px-to-rem(18);
+      font-weight: bold;
+    }
+    height: px-to-rem(48);
+    padding-top: px-to-rem(12);
+  }
+
+  @include state(active) {
+    // 蓝
+    // color: $color-link;
+    // background-color: rgba(190,230,245, 0.5);
+    // 黑白灰
+    background-color: $gray-3;
+    color: $gray-10;
+  }
+  @include state(update, has) {
+    background-color: #f1f8fb;
+  }
+  @include element(lot) {
+    flex-basis: 20%;
+  }
+  @include element(date) {
+    flex-basis: 15%;
+    padding-left: px-to-rem(5);
+  }
+  @include element(description) {
+    flex-grow: 1;
+    padding-left: px-to-rem(5);
+    flex-basis: 35%;
+  }
+  @include element(quantity) {
+    flex-basis: 10%;
+    text-align: center;
+    padding-left: px-to-rem(5);
+  }
+  @include element(remark) {
+    flex-basis: 10%;
+    text-align: right;
+    padding-left: px-to-rem(5);
+  }
+  @include element(expense) {
+    flex-basis: 10%;
+    text-align: right;
+    padding-left: px-to-rem(5);
+  }
+}
+
+@include block(ns(PurchaseOrderDetail, cm)) {
+  font-size: px-to-rem(14);
+  // 蓝
+  // background-color: #f1f8fb;
+  // 灰
+  background-color: $gray-1;
+  @include element(main) {
+    display: flex;
+    // background-color: #f1f8fb;
+  }
+  @include element(transactionHistory) {
+    flex-basis: 50%;
+    //display: flex;
+    padding-top: px-to-rem(5);
+    // border-top: 1px solid $gray-10;
+  }
+  @include element(label) {
+    font-family: $sans-serif-title-font;
+    font-weight: bold;
+    color: $gray-12;
+    margin-right: 1em;
+  }
+  @include element(info) {
+    display: flex;
+    margin-bottom: 0.5em;
+  }
+  @include element(keyInfo) {
+    flex-basis: 30%;
+    padding-top: px-to-rem(5);
+    padding-left: px-to-rem(16);
+    padding-right: px-to-rem(16);
+
+    @include element(label, true) {
+      flex-basis: 30%;
+      text-align: right;
+      flex-shrink: 0;
+    }
+  }
+  @include element(priceInfo) {
+    flex-basis: 20%;
+  }
+  @include element(footer) {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: px-to-rem(8);
+    padding-bottom: px-to-rem(8);
+    // background-color: rgba(180,224,240, 0.5);
+    // color: $gray-0;
+  }
+  @include element(hint) {
+    color: $gray-6;
+  }
+  @include element(action) {
+    margin-right: px-to-rem(12);
+    background: $gray-0;
+    border-color: $gray-3;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

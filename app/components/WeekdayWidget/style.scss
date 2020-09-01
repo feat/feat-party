@@ -1,0 +1,21 @@
+@import "base.scss";
+
+@include block(WeekdayWidget) {
+  padding-bottom: px-to-rem(2);
+  display: flex;
+  justify-content: space-around;
+  @include element(item) {
+    font-size: 0;
+    // margin-right: px-to-rem(12);
+    width: px-to-rem(28);
+    height: px-to-rem(28);
+    @include state(selected) {
+      .icon-weekday__circle {
+        fill: $gray-10;
+      }
+      .icon-weekday__char {
+        fill: white;
+      }
+    }
+  }
+}

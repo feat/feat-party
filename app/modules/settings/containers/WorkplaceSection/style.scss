@@ -1,0 +1,55 @@
+@import 'base.scss';
+
+@include block(Workplace) {
+  @include element(mapContainer) {
+    position: relative;
+    padding-top: 100%;
+
+    .WorkplaceMap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+  @include element(addressInfo) {
+    padding: px-to-rem(12);
+    background-color: white;
+  }
+}
+
+@include block(WorkplaceForm) {
+  display: flex;
+  @include element(col1) {
+    flex-basis: 50%;
+    min-width: 0;
+    flex-shrink: 0;
+    padding-right: px-to-rem(8);
+  }
+  @include element(col2) {
+    padding-left: px-to-rem(8);
+    flex-basis: 50%;
+  }
+
+  
+
+  @media (min-width: $screen-md-min) {
+    @include element(col1) {
+      padding-right: px-to-rem(10);
+    }
+    @include element(col2) {
+      padding-left: px-to-rem(10);
+    }
+  }
+
+  @media (min-width: $screen-xxl-min) {
+    @include element(col1) {
+      padding-right: px-to-rem(12);
+    }
+    @include element(col2) {
+      padding-left: px-to-rem(12);
+    }
+  }
+
+}

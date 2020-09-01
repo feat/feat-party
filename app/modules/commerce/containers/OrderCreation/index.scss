@@ -1,0 +1,73 @@
+@import 'base.scss';
+
+$address-item-height: 60px;
+
+@include block(ns(AddressList, oc)) {
+  .ft-Checkbox {
+    display: flex;
+    min-height: px-to-rem($address-item-height);
+    align-items: center;
+    &:hover {
+      background-color: $gray-1;
+    }
+
+    .symbol {
+      margin-left: px-to-rem(24);
+      margin-right: px-to-rem(24);
+    }
+  }
+  @include element(extraAction) {
+    display: flex;
+    min-height: px-to-rem($address-item-height);
+    align-items: center;
+    padding-left: px-to-rem(24);
+  }
+}
+
+@include block(OrderInfo) {
+  @include element(loading) {
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+@include block(OrderCreation) {
+  @include element(addAddress) {
+    display: block;
+    width: 100%;
+    padding: px-to-rem(12);
+    padding-left: px-to-rem(48);
+    height: px-to-rem(56);
+    text-align: left;
+    cursor: pointer;
+    font-size: px-to-rem(18);
+    transition: all .3s ease;
+
+    &:hover {
+      background-color: $gray-1;
+    }
+  }
+
+  @include element(content) {
+    display: flex;
+  }
+  @include element(orderInfo) {
+    flex-basis: 55%;
+  }
+  @include element(payment) {
+    flex-basis: 45%;
+    margin-left: px-to-rem(20);
+    display: flex;
+    justify-content: center;
+  }
+
+  .PaymentWidget {
+    width: px-to-rem(300);
+    height: px-to-rem(300);
+  }
+
+}

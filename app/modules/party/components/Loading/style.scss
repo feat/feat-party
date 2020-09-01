@@ -1,0 +1,25 @@
+@import 'base.scss';
+
+@include block(ns(Loading, IM)) {
+  position: relative;
+  padding-top: px-to-rem(5);
+  padding-bottom: px-to-rem(5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include modifier(xs) {
+    height: px-to-rem($loader-xs-size * 1.5);
+  }
+  @include modifier(sm) {
+    height: px-to-rem($loader-sm-size * 1.5);
+  }
+  @include modifier(md) {
+    height: px-to-rem($loader-md-size * 1.5);
+  }
+  @include modifier(lg) {
+    height: px-to-rem($loader-lg-size * 1.5);
+  }
+  @include modifier(groupMemberList) {
+    margin-bottom: px-to-rem(5);
+  }
+}

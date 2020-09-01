@@ -1,0 +1,35 @@
+@import 'base.scss';
+
+@include block(ns(OptionSymbol)) {
+  display: inline-block;
+  position: relative;
+
+  width: px-to-rem(20);
+  height: px-to-rem(20);
+  box-sizing: border-box;
+
+  border-radius: 50%;
+  border-width: px-to-rem(2);
+  border-style: solid;
+  border-color: $gray-10;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: px-to-rem(12);
+    height: px-to-rem(12);
+    background: transparent;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .3s ease;
+  }
+
+  @include state(selected) {
+    &::after {
+      background: $gray-10;
+    }
+  }
+}

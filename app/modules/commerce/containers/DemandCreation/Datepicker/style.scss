@@ -1,0 +1,126 @@
+@import 'base.scss';
+
+@include block(ns(DemandDateTimePicker, cm)) {
+  position: relative;
+  @include element(timeHint) {
+    font-size: px-to-rem(48);
+    color: $color-secondary;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    background: $gray-0;
+    padding: 0 px-to-rem(20);
+    opacity: 0.8;
+    transform: translate(-50%, -50%);
+  }
+
+  @include element(compo) {
+
+    @include modifier(hour) {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: -1rem;  
+    }
+  }
+
+  @include element(hour) {
+    width: 100%;
+    font-size: px-to-rem(14);
+    padding-left: px-to-rem(2);
+    @include modifier(notime) {
+      color: $gray-4;
+    }
+  }
+
+  @include element(option) {
+    font-size: px-to-rem(14);
+  }
+
+  @include element(timeLine) {
+    -webkit-appearance: none;
+    outline: none;
+    width: 100%;
+    height: 3px;
+    background: $gray-8;
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: px-to-rem(2);
+      height: px-to-rem(20);
+      background: $color-secondary;
+      border-radius: 0;
+      margin-bottom: px-to-rem(10);
+      cursor: pointer;
+      box-shadow: 3px 2px 4px $gray-10;
+      display: block;
+      &::before {
+        content: '';
+        width: 14px;
+        height: 14px;
+        background: skyblue;
+        display: block;
+        position: absolute;
+        left: 10px;
+      }
+    }
+  }
+
+  @include element(label) {
+    font-family: $sans-serif-heading-font;
+    line-height: 1;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    text-transform: capitalize;
+  }
+
+  @include element(options) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @include element(option) {
+    @include btn-base();
+    border: 1px solid transparent;
+    background-color: transparent;
+    border-radius: $btn-sm-border-radius;
+    margin-bottom: 2px;
+
+    &:hover {
+        background-color: $gray-1;
+    }
+
+    &:active {
+        color: $gray-8;
+        background-color: $gray-2;
+    }
+
+    @include state(selected) {
+        color: white;
+        background-color: $gray-10;
+    };
+
+    @include modifier(m) {
+      flex-basis: percentage(1 / 6);
+    }
+    @include modifier(d) {
+      flex-basis: percentage(1 / 7);
+    }
+  }
+
+  // .ft-FlatDatePicker {
+  //   width: 100%;
+  // }
+  // .ft-FlatDatePicker__monthCompo {
+  //   margin-bottom: px-to-rem(4);
+  // }
+  // .ft-FlatDatePicker__option_month {
+  //   width: 14.666%;
+  // }
+  // .ft-FlatDatePicker__compoTitle {
+  //   line-height: 1;
+  // }
+  // .ft-FlatDatePicker__compoTitle::after {
+  //   content: none;
+  // }
+
+}

@@ -1,0 +1,40 @@
+@import 'base.scss';
+
+@include block(OpenTimeSection) {
+  @include element(periodItem) {
+    margin-right: px-to-rem(12);
+  }
+}
+
+@include block(OpenTimeWeekday) {
+  padding-bottom: px-to-rem(2);
+  display: flex;
+  justify-content: space-around;
+  @include element(item) {
+    font-size: 0;
+    // margin-right: px-to-rem(12);
+    width: px-to-rem(28);
+    height: px-to-rem(28);
+    @include state(selected) {
+      .icon-weekday__circle {
+        fill: $gray-10;
+      }
+      .icon-weekday__char {
+        fill: white;
+      }
+    }
+
+    @include state(show) {
+      &::after {
+        content: '';
+        width: 50%;
+        height: 2px;
+        background-color: $gray-8;
+        display: block;
+        position: absolute;
+        left: 25%;
+        margin-top: 1px;
+      }
+    }
+  }
+}

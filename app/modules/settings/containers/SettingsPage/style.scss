@@ -1,0 +1,171 @@
+@import 'base.scss';
+
+@include block(ns(Setting, p)) {
+  display: flex;
+  padding-top: px-to-rem(24);
+  padding-left: px-to-rem(8);
+  padding-right: px-to-rem(8);
+  
+
+  @include element(col1) {
+    padding-left: px-to-rem(8);
+    padding-right: px-to-rem(8);
+    flex-basis: 25%;
+    min-width: 0;
+  }
+  @include element(col2) {
+    padding-left: px-to-rem(8);
+    padding-right: px-to-rem(8);
+    flex-basis: 75%;
+    min-width: 0;
+  }
+}
+
+.b-SecuritySettingOverlay {
+  position: fixed;
+  top: 45vh;
+  left: 50vw;
+  width: px-to-rem(360);
+  transform: translate(-50%, -50%);
+  @include poplayer-style;
+}
+
+@media (min-width: $screen-md-min) {
+  @include block(ns(Setting, p)) {
+    padding-top: px-to-rem(24);
+    padding-left: px-to-rem(12);
+    padding-right: px-to-rem(12);
+
+    @include element(col1) {
+      padding-left: px-to-rem(12);
+      padding-right: px-to-rem(12);
+    }
+    @include element(col2) {
+      padding-left: px-to-rem(12);
+      padding-right: px-to-rem(12);
+    }
+  }
+}
+
+@media (min-width: $screen-xxl-min) {
+  @include block(ns(Setting, p)) {
+    padding-top: px-to-rem(32);
+    padding-left: px-to-rem(16);
+    padding-right: px-to-rem(16);
+
+    @include element(col1) {
+      padding-left: px-to-rem(16);
+      padding-right: px-to-rem(16);
+    }
+    @include element(col2) {
+      padding-left: px-to-rem(16);
+      padding-right: px-to-rem(16);
+    }
+  }
+}
+
+// @include block(SettingPage) {
+//   @include element(avatar) {
+//     max-width: px-to-rem(280);
+//   }
+//   @include element(form) {
+//     max-width: px-to-rem(460);
+//   }
+
+//   @include element(column) {
+//     flex-basis: 100%;
+//     min-width: 0%;
+//   }
+
+//   @include element(main) {
+//     padding-left: px-to-rem(12);
+//     padding-right: px-to-rem(12);
+//     padding-top: px-to-rem(24);
+//   }
+
+//   // Landscape phones
+//   @media(min-width: $screen-xs-min){
+//     @include element(main) {
+//       display: flex;
+//     }
+
+//     @include element(col1) {
+//       flex-basis: 32%;
+//     }
+//     @include element(col2) {
+//       flex-grow: 1 !important;
+//     }
+
+//     @include element(wrap) {
+//       display: flex;
+//       flex-wrap: wrap;
+//       margin-left: px-to-rem(-12);
+//       margin-right: px-to-rem(-12);
+//     }
+
+//     @include element(column) {
+//       padding-left: px-to-rem(12);
+//       padding-right: px-to-rem(12);
+//     }
+//   }
+
+//   // Portrait Tablets & Small Desktop
+//   @media(min-width: $screen-sm-min){
+
+//   }
+//   // Landscape Tablets & Medium Desktop
+//   @media(min-width: $screen-md-min){
+//     @include element(column) {
+//       flex-basis: 50%;
+//       flex-grow: 0;
+//       flex-shrink: 0;
+//       min-width: 0;
+//     }
+//   }
+//   // Large Desktop
+//   @media(min-width: $screen-lg-min){
+
+//   }
+//   // Extra Large Desktop
+//   @media(min-width: $screen-xl-min){
+//     @include element(header) {
+//       padding-top: 0;
+//       border-bottom: px-to-rem(6) solid;
+//       border-image: linear-gradient(
+//           to right,
+//           $color-secondary 12rem,
+//           $gray-10 100px
+//       )
+//       1;
+//     }
+//     @include element(column) {
+//       flex-basis: 33.33%;
+//     }
+//   }
+//   // Extreme Large Desktop
+//   @media(min-width: $screen-xxl-min){
+//     @include element(main) {
+//       padding-top: px-to-rem(36);
+//     }
+//     @include element(col1) {
+//       max-width: px-to-rem(340);
+//     }
+//     $profile-gutter-width-xl: 20;
+
+//     @include element(wrap) {
+//       margin-left: px-to-rem(-$profile-gutter-width-xl);
+//       margin-right: px-to-rem(-$profile-gutter-width-xl);
+//     }
+//     @include element(column) {
+//       padding-left: px-to-rem($profile-gutter-width-xl);
+//       padding-right: px-to-rem($profile-gutter-width-xl);
+//     }
+//   }
+// }
+
+
+// @include block(ns(Block, st)) {
+//   @include element(toggleBtn) {
+//     font-weight: bold;
+//   }
+// }

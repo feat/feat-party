@@ -1,0 +1,189 @@
+@import 'base.scss';
+
+@include block(ExpertiseForm) {
+  padding: px-to-rem(5);
+  margin-bottom: px-to-rem(5);
+  // border-bottom: 1px dashed $gray-6;
+  & + & {
+    border-top: 2px solid $gray-10;
+    // padding-top: px-to-rem(8);
+  }
+
+  @include element(content) {
+    display: flex;
+  }
+
+  @include element(basic) {
+    flex: 1;
+    margin-right: px-to-rem(24);
+
+    // .ft-FormItem {
+    //   display: flex;
+    //   flex-direction: row;
+    //   padding-top: px-to-rem(6);
+    // }
+    // .ft-FormItem__label {
+    //   width: 6em;
+    // }
+  }
+
+  @include element(footer) {
+    display: flex;
+    flex-direction: flex-end;
+  }
+
+  @include element(typeOption) {
+    flex-grow: 1;
+    margin-top: px-to-rem(5);
+    margin-bottom: px-to-rem(5);
+    padding-left: px-to-rem(6);
+    padding-right: px-to-rem(6);
+    border-style: dashed;
+
+    @include state(selected) {
+    }
+  }
+  @include element(rentOutCheckbox) {
+    background-color: #3c3c3b;
+    text-align: center;
+    color: #fff;
+    border: none;
+    &:hover {
+      background-color: #3c3c3b;
+      transform: scale(0.95);
+    }
+    &:disabled {
+      background-color: #f6f6f6;
+      color: #3c3c3b;
+      opacity: 1;
+    }
+
+    .ft-Checkbox {
+      width: 100%;
+      .symbol {
+        display: none;
+      }
+    }
+  }
+  @include element(tagField) {
+    .Select {
+      .Select-control {
+        background-color: transparent;
+        border-bottom: 1px solid transparent;
+        &:hover {
+          background-color: #fff;
+          border-bottom: 1px solid #3c3c3b;
+        }
+
+        .Select-value {
+          position: relative;
+          transition: all 0.3s ease;
+          color: #575756;
+          background-color: #f6f6f6;
+          border-color: #c6c6c6;
+          margin-top: 0;
+          .Select-value-icon {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 1;
+            opacity: 0;
+          }
+          &:hover {
+            transform: scale(0.95);
+            background-color: #e9e9e9;
+            border-color: #b9b9b9;
+            opacity: 0.8;
+            .Select-value-icon {
+              background-color: transparent;
+              opacity: 1;
+              font-size: px-to-rem(23);
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  @include element(CategoryField) {
+    border-bottom: 1px dashed #b2b2b2;
+    // padding-top: px-to-rem(5);
+    // padding-bottom: px-to-rem(5);
+    .Select {
+      .Select-control {
+        background-color: transparent;
+        border-bottom: 1px solid transparent;
+        &:hover {
+          background-color: #fff;
+          border-bottom: 1px solid #3c3c3b;
+        }
+      }
+      .Select-menu-outer {
+        .is-disabled {
+          font-size: px-to-rem(18);
+        }
+      }
+    }
+  }
+  @include element(services) {
+    .PriceButton {
+      width: px-to-rem(280);
+      // margin-bottom: .75rem;
+      // &:last-of-type {
+      //   margin-bottom: 0;
+      // }
+    }
+  }
+}
+
+@include block(PriceSettingBtn) {
+  position: relative;
+  height: px-to-rem(56);
+  width: 100%;
+  text-align: right;
+  margin-top: px-to-rem(12);
+  margin-bottom: px-to-rem(12);
+
+  @include element(label) {
+    display: block;
+    height: px-to-rem(18);
+    line-height: 1.1;
+    font-size: px-to-rem(14);
+  }
+
+  @include element(price) {
+    font-size: px-to-rem(20);
+  }
+
+
+  @include element(hint) {
+    position: absolute;
+    left: px-to-rem(3);
+    top: px-to-rem(3);
+    font-size: px-to-rem(14);
+  }
+
+  @include state(active) {
+    background-color: $gray-1;
+    border-width: 2px;
+    color: $text-color;
+    border-color: $input-active-color;
+  }
+
+  @include state(available) {
+    color: #fff;
+    background-color: $gray-10;
+  }
+}
+
+
+@include block(ServicesField) {
+  display: flex;
+  @include element(label) {
+    width: px-to-rem(190);
+    flex-shrink: 0;
+    // margin-right: px-to-rem(24);
+  }
+
+}

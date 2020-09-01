@@ -1,0 +1,296 @@
+@import 'base.scss';
+
+@include block(ns(DemandCreation, cm)) {
+  position: relative;
+  @include element(content) {
+    display: flex;
+    margin-top: px-to-rem(12);
+    height: calc(100% - #{px-to-rem(12)});
+  }
+  @include element(avatar) {
+    margin-bottom: px-to-rem(16);
+  }
+  @include element(main) {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 12px 4px;
+    background-color: $gray-2;
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  @include element(col) {
+    flex-grow: 0;
+    flex-shrink: 0;
+    
+    &:first-of-type {
+      flex-basis: 52%;
+      padding-right: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+    &:last-of-type {
+      flex-basis: 48%;
+      padding: 0px 10px;
+    }
+  }
+
+  @include element(label) {
+    font-weight: 600;
+  }
+
+  @include element(option) {
+    font-size: px-to-rem(14);
+    height: px-to-rem(24);
+    line-height: px-to-rem(16);
+    margin-right: px-to-rem(8);
+  }
+
+  @include element(tips) {
+    font-size: px-to-rem(14);
+  }
+
+  @include element(field) {
+    margin-bottom: px-to-rem(10);
+    @include modifier(desc) {
+      flex: 1;
+      overflow: auto;
+    }
+    @include modifier(serviceType) {
+      display: flex;
+      align-items: center;
+      @include element(label, true) {
+        min-width: px-to-rem(90);
+      }
+    }
+    @include modifier(priceUnit) {
+      display: flex;
+      align-items: center;
+      @include element(label, true) {
+        min-width: px-to-rem(90);
+      }
+    }
+    @include modifier(address) {
+      display: flex;
+      align-items: center;
+      max-height: px-to-rem(48);
+      opacity: 1;
+      transition: max-height .3s ease, opacity .5s ease;
+      @include element(label, true) {
+        min-width: px-to-rem(90);
+      }
+
+      @include state(hidden) {
+        max-height: 0;
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+    @include modifier(category) {
+      @include element(fieldHeader, true) {
+        border-bottom: 4px solid $gray-10;
+        padding-left: px-to-rem(6);
+      }
+      @include element(label, true) {
+        font-size: px-to-rem(22);
+        line-height: 1.1;
+      }
+    }
+    @include modifier(dateRequired) {
+      @include element(fieldHeader, true) {
+        margin-bottom: px-to-rem(8);
+      }
+    }
+    @include modifier(closeDate) {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    @include modifier(tags) {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      min-height: px-to-rem(30);
+    }
+
+    @include state(error, has) {
+      @include element(label, true) {
+        color: $color-error;
+      }
+      .public-DraftEditorPlaceholder-inner {
+        color: transparentize($color-error, .4);
+      }
+    }
+  }
+
+  @include element(tagInput) {
+    min-width: px-to-rem(100);
+    flex: 1;
+    margin-top: px-to-rem(3);
+  }
+
+  @include element(tag) {
+    margin-right: px-to-rem(5);
+  }
+
+  @include element(autoCloseDateMessage) {
+    position: absolute;
+    padding-left: px-to-rem(48);
+    padding-right: px-to-rem(40);
+    height: px-to-rem(54);
+    left: px-to-rem(-8);
+    right: px-to-rem(-8);
+    top: 0;
+    line-height: 1.25;
+
+    .ft-SvgIcon {
+      position: absolute;
+      left: px-to-rem(12);
+    }
+    @include element(closeMsgBtn, true) {
+      position: absolute;
+      right: 10px;
+      bottom: 6px;
+    }
+  }
+
+  @include element(dateRequired) {
+    border: 2px solid $gray-10;
+    background-color: white;
+    border-radius: 10px;
+    padding-left: px-to-rem(8);
+    padding-right: px-to-rem(8);
+    font-size: px-to-rem(14);
+  }
+  @include element(fieldHeader) {
+    display: flex;
+    margin-bottom: px-to-rem(5);
+    @include element(label, true) {
+      margin-right: 1em;
+    }
+  }
+
+
+
+  @include element(category) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @include element(catSection) {
+    flex-basis: 33.3%;
+    flex-grow: 0;
+    min-width: 0;
+    padding-right: 12px;
+    margin-bottom: 12px;
+  }
+  @include element(catSectionHeader) {
+    font-size: px-to-rem(16);
+    padding-left: px-to-rem(8);
+    margin-bottom: px-to-rem(5);
+    @include text-truncate();
+  }
+  @include element(catOption) {
+    display: block;
+    margin-bottom: 5px;
+    max-width: 100%;
+    font-size: px-to-rem(14);
+    height: px-to-rem(24);
+    line-height: px-to-rem(16);
+    text-align: left;
+    @include text-truncate();
+  }
+  @include element(titleInput) {
+    &.is-empty {
+      .public-DraftStyleDefault-unstyled:first-of-type {
+        min-height: px-to-rem(52);
+      }
+    }
+    .public-DraftStyleDefault-unstyled:first-of-type {
+      font-size: px-to-rem(24);
+      font-weight: bold;
+      line-height: 1.1;
+      min-height: 0;
+      transition: min-height .3s ease;
+    }
+  }
+  @include element(titleInputPlaceholder) {
+    font-size: px-to-rem(24);
+    font-weight: bold;
+    line-height: 1.1;
+  }
+
+  @include element(submitting) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: px-to-rem(36);
+    background-color: rgba(255, 255, 255, .6);
+    transform: translate(-50%, -50%);
+  }
+
+  .ft-ImagesDropzone__thumb {
+    margin-right: 8px;
+    width: 50px;
+    height: 37.5px;
+  }
+
+  // Landscape Phones
+  @media (min-width: $screen-xs-min) {
+
+  }
+
+  // Portrait Tablets & Small Desktop
+  @media (min-width: $screen-sm-min) {
+    
+  }
+  // Landscape Tablets & Medium Desktop
+  @media (min-width: $screen-md-min) {
+    
+  }
+  // Large Desktop
+  @media (min-width: $screen-lg-min) {
+    
+  }
+  // Extra Large Desktop
+  @media (min-width: $screen-xl-min) {
+    @include element(main) {
+      padding: px-to-rem(16) px-to-rem(24) px-to-rem(4);
+    }
+    @include element(col) {
+      &:first-of-type {
+        padding-right: px-to-rem(18);
+      }
+      &:last-of-type {
+        padding-left: px-to-rem(18);
+        padding-right: px-to-rem(18);
+        padding-top: px-to-rem(12);
+      }
+    }
+    @include element(field) {
+      @include modifier(dateRequired) {
+        padding-left: px-to-rem(12);
+        padding-right: px-to-rem(12);
+      }
+      @include modifier(closeDate) {
+        margin-top: px-to-rem(18);
+        padding-left: px-to-rem(24);
+        padding-right: px-to-rem(24);
+      }
+    }
+    @include element(autoCloseDateMessage) {
+      height: px-to-rem(104);
+      bottom: px-to-rem(8);
+      right: px-to-rem(12);
+    }
+    .ft-ImagesDropzone__thumb {
+      margin-right: px-to-rem(12);
+      width: px-to-rem(64);
+      height: px-to-rem(48);
+    }
+  }
+  // Extreme Large Desktop
+  @media (min-width: $screen-xxl-min) {
+    
+  }
+}

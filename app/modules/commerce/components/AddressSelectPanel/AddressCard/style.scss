@@ -1,0 +1,48 @@
+@import 'base.scss';
+
+
+@include block(ns(AddressCard)) {
+  // border: 1px solid $gray-2;
+  margin-bottom: px-to-rem(24);
+  padding-left: px-to-rem(32);
+
+  @include element(username) {
+    font-size: px-to-rem(24);
+    font-weight: bold;
+    margin-bottom: px-to-rem(12);
+  }
+
+  @include element(label) {
+    padding-right: .5em;
+  }
+
+  @include element(actions) {
+    display: flex;
+    position: relative;
+    margin-top: px-to-rem(10);
+    left: px-to-rem(-$btn-md-padding-x);
+  }
+  @include element(action) {
+    padding-left: px-to-rem(12);
+    padding-right: px-to-rem(12);
+    position: relative;
+    &::before {
+      content: '';
+      display: block;
+      height: px-to-rem(16);
+      width: px-to-rem(2);
+      background-color: $color-link;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:first-child {
+      padding-left: 0;
+      &::before {
+        content: none;
+      }
+    }
+  }
+}

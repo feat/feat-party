@@ -1,0 +1,199 @@
+@import 'base.scss';
+
+@include block(ns(DemandItem, cm)) {
+  height: px-to-rem(380);
+  border-bottom: 1px solid $gray-10;
+  position: relative;
+  padding-top: px-to-rem(8);
+  padding-bottom: px-to-rem(8);
+  display: flex;
+  flex-direction: column;
+
+  @include element(main) {
+    display: flex;
+    flex: 1;
+  }
+
+  @include element(info) {
+    flex-basis: 33%;
+    min-width: 0;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-right: px-to-rem(24);
+  }
+  @include element(biddingInfo) {
+    flex-basis: 67%;
+    min-width: 0;
+    flex-grow: 0;
+    padding-right: px-to-rem(5);
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include element(actions) {
+
+  }
+
+
+  @include element(title) {
+    margin: 0;
+    font-size: px-to-rem(32);
+    max-height: 3em;
+    overflow: hidden;
+  }
+
+  @include element(content) {
+    font-size: px-to-rem(14);
+    font-weight: 200;
+    max-height: 8.5em;
+    min-height: 3em;
+    overflow: auto;
+    padding-left: px-to-rem(3);
+    p {
+      margin-top: 0;
+    }
+  }
+
+  @include element(images) {
+    margin-top: auto;
+  }
+
+  @include element(main) {
+
+  }
+
+  @include element(lists) {
+    max-height: px-to-rem(250);
+    overflow: auto;
+    padding-right: px-to-rem(6);
+    &::-webkit-scrollbar {
+      width: px-to-rem(4);
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+  @include element(list) {
+    padding: px-to-rem(10) 0;
+    font-size: px-to-rem(14);
+    cursor: pointer;
+  }
+  @include element(user) {
+    @include modifier(time) {
+      padding-left: px-to-rem(10);
+    }
+    @include modifier(location) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+    }
+  }
+
+  @include element(statusInfo) {
+    margin-top: auto;
+    display: flex;
+    min-height: px-to-rem(40);
+    align-items: center;
+    @include element(actions, true) {
+      margin-left: auto;
+    }
+  }
+  @include element(status) {
+    display: flex;
+    align-items: center;
+  }
+  @include element(statusBtn) {
+    // padding: 0 px-to-rem(16);
+  }
+
+  @include element(field) {
+    margin-right: 2em;
+  }
+
+  @include element(fields) {
+    padding-left: px-to-rem(3);
+    @include element(fieldLabel, true) {
+      padding-left: 0;
+    }
+  }
+
+  @include element(fieldLabel) {
+    font-weight: bold;
+    margin-right: .5em;
+    padding-left: px-to-rem(3);
+  }
+
+  @include element(closeLoading) {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100% !important;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.has-canceled {
+    filter: grayscale(100%);
+  }
+}
+
+@include block(ns(DemandBiddingRecord, cm)) {
+  display: flex;
+  position: relative;
+  padding-top: px-to-rem(5);
+  padding-bottom: px-to-rem(5);
+
+  @include element(cell) {
+    flex-grow: 0;
+    @include modifier(no) {
+      position: absolute;
+      right: calc(100% + .5em);
+      text-align: right;
+    }
+    @include modifier(user) {
+      flex-basis: 50%;
+    }
+    @include modifier(locale) {
+      flex-basis: 25%;
+      text-align: right;
+    }
+    @include modifier(price) {
+      margin-left: auto;
+    }
+  }
+  @include element(userLocation) {
+    margin-right: .5em;
+  }
+
+  &.has-quit {
+    filter: grayscale(100%);
+    text-decoration: line-through;
+  }
+}
+
+@include block(ns(DemandBiddings, cm)) {
+  @include element(header) {
+    display: flex;
+    border-bottom: 2px solid $gray-10;
+    font-weight: bold;
+    padding-top: px-to-rem(4);
+  }
+  @include element(cell) {
+    flex-grow: 0;
+    @include modifier(user) {
+      flex-basis: 50%;
+    }
+    @include modifier(locale) {
+      flex-basis: 25%;
+      text-align: right;
+    }
+    @include modifier(price) {
+      margin-left: auto;
+    }
+  }
+}
